@@ -2,7 +2,7 @@
 import { lazy } from "react";
 import { Route, Routes } from "react-router-dom";
 
-const Auth = lazy(() => import("./Auth"));
+const Auth = lazy(() => import("./AuthPage"));
 
 export const Routing = () => {
     return (
