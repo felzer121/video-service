@@ -14,6 +14,7 @@ import { DarkFilled } from '../../shared/darkFilled'
 import './styles.scss'
 import { NavLink } from 'react-router-dom'
 import Happy from './fon.svg?component'
+import { login } from '../../shared/api/user'
 
 interface authField {
     email: string
@@ -46,7 +47,7 @@ export const Auth = () => {
     }
     
     const authentication = async () => {
-        console.log('auth')
+        login(authField.email, authField.password)
     }
 
 
@@ -96,7 +97,7 @@ export const Auth = () => {
                                 <InputLabel
                                     htmlFor='email'
                                     color='primary'
-                                    sx={{ color: '#6D6D6D', fontFamily: 'Heebo' }}>
+                                    sx={{ color: '#6D6D6D', fontFamily: 'Inter' }}>
                                     Email
                                 </InputLabel>
                                 <DarkFilled
@@ -123,7 +124,7 @@ export const Auth = () => {
                                 <InputLabel
                                     htmlFor='password'
                                     color='primary'
-                                    sx={{ color: '#6D6D6D', fontFamily: 'Heebo' }}>
+                                    sx={{ color: '#6D6D6D', fontFamily: 'Inter' }}>
                                     Password
                                 </InputLabel>
                                 <DarkFilled
@@ -143,7 +144,7 @@ export const Auth = () => {
                         <div className='auth__loginControl'>
                             <Tooltip disableHoverListener={validateField.email.isValid && validateField.password.isValid ? true : false} title="fill the form">
                                 <span>
-                                    <Button variant='contained' disabled onClick={authentication} className='auth__loginButton'>
+                                    <Button variant='contained' onClick={authentication} className='auth__loginButton'>
                                         Войти
                                     </Button>
                                 </span>
@@ -157,7 +158,9 @@ export const Auth = () => {
                             <div className='auth__noAccount-line' />
                         </div>
                         <div className='auth__noAccount-info'>
-                            <p className='auth__noAccount-txt'>Не имеете учетной записи? <NavLink to="registration" className='auth__noAccount-link'>Регистрация</NavLink></p>
+                            <p className='auth__noAccount-txt'>Не имеете учетной записи?
+                                <NavLink to="registration" className='auth__noAccount-link'> Регистрация</NavLink>
+                            </p>
                         </div>
                     </div>
                 </div>

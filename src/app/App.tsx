@@ -3,6 +3,7 @@ import { withProviders } from "./providers";
 import logo from './logo.svg'
 import './index.scss';
 import { Routing } from '../pages';
+import { BrowserRouter } from "react-router-dom";
 import { createTheme, ThemeProvider } from '@mui/material';
 
 const theme = createTheme({
@@ -20,11 +21,14 @@ function App() {
 
   return (
     <div>
-      <ThemeProvider theme={theme}>
-        <Routing />
-      </ThemeProvider>
+      <BrowserRouter>
+        <ThemeProvider theme={theme}>
+          <Routing />
+        </ThemeProvider>
+      </BrowserRouter>
+      
     </div>
   )
 }
 
-export default withProviders(App)
+export default App

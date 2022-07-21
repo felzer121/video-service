@@ -14,5 +14,12 @@ export const DarkFilled = styled(FilledInput)({
   },
   '&.Mui-focused': {
     backgroundColor: 'rgba(255, 255, 255, 0.2)'
+  },
+  '& input:-webkit-autofill' : {
+    backgroundColor: '#45413D !important',
+    boxShadow: '0 0 0 1000px #45413D inset',
+    borderTopLeftRadius: '6px',
+    borderTopRightRadius: '6px',
+    textFillColor: '#555555 !important'
   }
 })
