@@ -16,8 +16,11 @@ import './styles.scss'
 import { Link } from 'react-router-dom'
 import registrationFon from '../../shared/assets/registration.jpg'
 import { register } from '../../shared/api/user'
+import axios, {AxiosError} from 'axios';
 
 interface authField {
+    name: string
+    serdName: string
     email: string
     password: string
 }
@@ -31,14 +34,16 @@ interface validAuthField {
 
 export const Registration = () => {
 
-    const [authField, setAuthField] = React.useState<authField>({ email: '', password: '' })
+    const [authField, setAuthField] = React.useState<authField>({ name: '', serdName: '', email: '', password: '' })
     const [validateField, setValidateField] = React.useState<validAuthField>({
-      email: { isValid: null },
-      password: { isValid: null }
+        name: { isValid: null },
+        serdName:{ isValid: null },
+        email: { isValid: null },
+        password: { isValid: null }
     })
     const [error, setError] = React.useState('')
 
-    const handleValidField = (type: 'email' | 'password', value: string) => {
+    const handleValidField = (type: 'email' | 'password' | 'name' | 'serdName', value: string) => {
         const valid = validate(type, value)
         if (valid?.isValid) {
           setValidateField({ ...validateField, [type]: { isValid: valid.isValid } })
@@ -48,9 +53,18 @@ export const Registration = () => {
     }
     
     const registration = async () => {
-        register(authField.email, authField.password)
+        try {
+            await register(authField.email, authField.password)
+        } catch(err) {
+            if (axios.isAxiosError(err)) {
+                const error = err as AxiosError
+                if (error.response) {
+                    const message = typeof(error.response?.data) === 'string' ? error.response?.data : ''
+                    setValidateField({ ...validateField, email: { isValid: false, error: message } })
+                }
+            }
+        }
     }
-
 
     return (
         <div className='registration'>
@@ -91,109 +105,116 @@ export const Registration = () => {
                         <div className='auth__loginForm'>
                             <Box mt={2} mb={2} display={'grid'} gap={2} gridTemplateColumns={'repeat(2, 1fr)'}>
                                 <FormControl
-                                sx={{ width: '100%' }}
-                                variant='filled'
-                                error={
-                                    !validateField.email.isValid && validateField.email.isValid !== null
-                                    ? true
-                                    : false
+                                    sx={{ width: '100%' }}
+                                    variant='filled'
+                                    error={
+                                        !validateField.name.isValid && validateField.name.isValid !== null
+                                        ? true
+                                        : false
                                 }>
-                                <InputLabel
-                                    htmlFor='Ваше Имя'
-                                    color='primary'
-                                    sx={{ color: '#6D6D6D', fontFamily: 'Inter' }}>
-                                    Ваше Имя
-                                </InputLabel>
-                                <DarkFilled
-                                    value={authField.email}
-                                    onChange={event => setAuthField({ ...authField, email: event.target.value })}
-                                    required
-                                    id='name'
-                                    onBlur={event => handleValidField('email', event.target.value)}
-                                />
-                                {validateField?.email?.error && (
-                                    <FormHelperText id='password'>{validateField.email.error}</FormHelperText>
-                                )}
+                                    <InputLabel
+                                        htmlFor='name'
+                                        color='primary'
+                                        sx={{ color: '#6D6D6D', fontFamily: 'Inter' }}>
+                                        Ваше Имя
+                                    </InputLabel>
+                                    <DarkFilled
+                                        autoComplete='no'
+                                        value={authField.name}
+                                        onChange={event => setAuthField({ ...authField, name: event.target.value })}
+                                        required
+                                        id='name'
+                                        type='text'
+                                        onBlur={event => handleValidField('name', event.target.value)}
+                                    />
+                                    {validateField?.name?.error && (
+                                        <FormHelperText id='password'>{validateField.name.error}</FormHelperText>
+                                    )}
                                 </FormControl>
                                 <FormControl
-                                sx={{ width: '100%' }}
-                                variant='filled'
-                                error={
-                                    !validateField.email.isValid && validateField.email.isValid !== null
-                                    ? true
-                                    : false
-                                }>
-                                <InputLabel
-                                    htmlFor='Ваша Фамилия'
-                                    color='primary'
-                                    sx={{ color: '#6D6D6D', fontFamily: 'Inter' }}>
-                                    Ваша Фамилия
-                                </InputLabel>
-                                <DarkFilled
-                                    value={authField.email}
-                                    onChange={event => setAuthField({ ...authField, email: event.target.value })}
-                                    required
-                                    id='serdName'
-                                    onBlur={event => handleValidField('email', event.target.value)}
-                                />
-                                {validateField?.email?.error && (
-                                    <FormHelperText id='password'>{validateField.email.error}</FormHelperText>
-                                )}
-                                </FormControl>
-                            </Box>
-                            <Box mt={2} mb={2}>
-                                <FormControl
-                                sx={{ width: '100%' }}
-                                variant='filled'
-                                error={
-                                    !validateField.email.isValid && validateField.email.isValid !== null
-                                    ? true
-                                    : false
-                                }>
-                                <InputLabel
-                                    htmlFor='email'
-                                    color='primary'
-                                    sx={{ color: '#6D6D6D', fontFamily: 'Inter' }}>
-                                    Email
-                                </InputLabel>
-                                <DarkFilled
-                                    value={authField.email}
-                                    onChange={event => setAuthField({ ...authField, email: event.target.value })}
-                                    required
-                                    id='email'
-                                    onBlur={event => handleValidField('email', event.target.value)}
-                                />
-                                {validateField?.email?.error && (
-                                    <FormHelperText id='password'>{validateField.email.error}</FormHelperText>
-                                )}
+                                    sx={{ width: '100%' }}
+                                    variant='filled'
+                                    error={
+                                        !validateField.serdName.isValid && validateField.serdName.isValid !== null
+                                        ? true
+                                        : false
+                                    }>
+                                    <InputLabel
+                                        htmlFor='Ваша Фамилия'
+                                        color='primary'
+                                        sx={{ color: '#6D6D6D', fontFamily: 'Inter' }}>
+                                        Ваша Фамилия
+                                    </InputLabel>
+                                    <DarkFilled
+                                        autoComplete='no'
+                                        value={authField.serdName}
+                                        onChange={event => setAuthField({ ...authField, serdName: event.target.value })}
+                                        required
+                                        type='text'
+                                        id='serdName'
+                                        onBlur={event => handleValidField('serdName', event.target.value)}
+                                    />
+                                    {validateField?.serdName?.error && (
+                                        <FormHelperText id='password'>{validateField.serdName.error}</FormHelperText>
+                                    )}
                                 </FormControl>
                             </Box>
                             <Box mt={2} mb={2}>
                                 <FormControl
-                                sx={{ width: '100%' }}
-                                error={
-                                    !validateField.password.isValid && validateField.password.isValid !== null
-                                    ? true
-                                    : false
-                                }
-                                variant='filled'>
-                                <InputLabel
-                                    htmlFor='password'
-                                    color='primary'
-                                    sx={{ color: '#6D6D6D', fontFamily: 'Inter' }}>
-                                    Password
-                                </InputLabel>
-                                <DarkFilled
-                                    type='password'
-                                    value={authField.password}
-                                    onChange={event => setAuthField({ ...authField, password: event.target.value })}
-                                    required
-                                    id='password'
-                                    onBlur={event => handleValidField('password', event.target.value)}
-                                />
-                                {validateField?.password?.error && (
-                                    <FormHelperText id='password'>{validateField.password.error}</FormHelperText>
-                                )}
+                                    sx={{ width: '100%' }}
+                                    variant='filled'
+                                    error={
+                                        !validateField.email.isValid && validateField.email.isValid !== null
+                                        ? true
+                                        : false
+                                    }>
+                                    <InputLabel
+                                        htmlFor='email'
+                                        color='primary'
+                                        sx={{ color: '#6D6D6D', fontFamily: 'Inter' }}>
+                                        Email
+                                    </InputLabel>
+                                    <DarkFilled
+                                        autoComplete='no'
+                                        value={authField.email}
+                                        onChange={event => setAuthField({ ...authField, email: event.target.value })}
+                                        required
+                                        type='email'
+                                        id='email'
+                                        onBlur={event => handleValidField('email', event.target.value)}
+                                    />
+                                    {validateField?.email?.error && (
+                                        <FormHelperText id='password'>{validateField.email.error}</FormHelperText>
+                                    )}
+                                </FormControl>
+                            </Box>
+                            <Box mt={2} mb={2}>
+                                <FormControl
+                                    sx={{ width: '100%' }}
+                                    error={
+                                        !validateField.password.isValid && validateField.password.isValid !== null
+                                        ? true
+                                        : false
+                                    }
+                                    variant='filled'>
+                                    <InputLabel
+                                        htmlFor='password'
+                                        color='primary'
+                                        sx={{ color: '#6D6D6D', fontFamily: 'Inter' }}>
+                                        Password
+                                    </InputLabel>
+                                    <DarkFilled
+                                        autoComplete='no'
+                                        type='password'
+                                        value={authField.password}
+                                        onChange={event => setAuthField({ ...authField, password: event.target.value })}
+                                        required
+                                        id='password'
+                                        onBlur={event => handleValidField('password', event.target.value)}
+                                    />
+                                    {validateField?.password?.error && (
+                                        <FormHelperText id='password'>{validateField.password.error}</FormHelperText>
+                                    )}
                                 </FormControl>
                             </Box>
                         </div>
@@ -203,9 +224,10 @@ export const Registration = () => {
                                     Назад
                                 </SubButton>
                             </Link>
-                            <Tooltip disableHoverListener={validateField.email.isValid && validateField.password.isValid ? true : false} title="fill the form">
+                            <Tooltip disableHoverListener={validateField.name.isValid && validateField.serdName.isValid && validateField.email.isValid && validateField.password.isValid ? true : false} title="fill the form">
                                 <span>
-                                    <Button variant='contained' onClick={registration} className='auth__loginButton'>
+                                    <Button disabled={validateField.name.isValid && validateField.serdName.isValid && validateField.email.isValid && validateField.password.isValid ? false : true}
+                                            variant='contained' onClick={registration} className='auth__loginButton'>
                                         Регистрация
                                     </Button>
                                 </span>
@@ -219,7 +241,7 @@ export const Registration = () => {
                             <div className='auth__noAccount-line' />
                         </div>
                         <div className='auth__noAccount-info'>
-                            <p className='auth__noAccount-txt'> вы соглашаетесь на обработку персональных данных</p>
+                            <p className='auth__noAccount-txt'>Вы соглашаетесь на обработку персональных данных</p>
                         </div>
                     </div>
                 </div>

@@ -101,6 +101,7 @@ export const Auth = () => {
                                     Email
                                 </InputLabel>
                                 <DarkFilled
+                                    autoComplete='off'
                                     value={authField.email}
                                     onChange={event => setAuthField({ ...authField, email: event.target.value })}
                                     required
@@ -128,6 +129,7 @@ export const Auth = () => {
                                     Password
                                 </InputLabel>
                                 <DarkFilled
+                                    autoComplete='off'
                                     type='password'
                                     value={authField.password}
                                     onChange={event => setAuthField({ ...authField, password: event.target.value })}
