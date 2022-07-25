@@ -5,6 +5,8 @@ import './index.scss';
 import { Routing } from '../pages';
 import { BrowserRouter } from "react-router-dom";
 import { createTheme, ThemeProvider } from '@mui/material';
+import { Provider } from 'react-redux'
+import { store } from "../shared/store";
 
 const theme = createTheme({
   palette: {
@@ -26,11 +28,12 @@ function App() {
   return (
     <div>
       <BrowserRouter>
+      <Provider store={store}>
         <ThemeProvider theme={theme}>
           <Routing />
         </ThemeProvider>
+        </Provider>
       </BrowserRouter>
-      
     </div>
   )
 }

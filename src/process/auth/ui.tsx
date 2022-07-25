@@ -12,6 +12,8 @@ import HowToRegIcon from '@mui/icons-material/HowToReg'
 import { validate } from '../../shared/validate'
 import { DarkFilled } from '../../shared/darkFilled'
 import './styles.scss'
+import { useDispatch } from 'react-redux'
+import { setAuth } from '../../shared/store/user/userSlice'
 import { NavLink } from 'react-router-dom'
 import Happy from './fon.svg?component'
 import { login } from '../../shared/api/user'
@@ -35,6 +37,7 @@ export const Auth = () => {
       email: { isValid: null },
       password: { isValid: null }
     })
+    const dispatch = useDispatch()
     const [error, setError] = React.useState('')
 
     const handleValidField = (type: 'email' | 'password', value: string) => {
@@ -47,9 +50,14 @@ export const Auth = () => {
     }
     
     const authentication = async () => {
-        login(authField.email, authField.password)
+        try {
+            const isAuth = await login(authField.email, authField.password)
+            dispatch(setAuth(true))
+        } catch(e) {
+            console.log(e)
+        }
     }
-
+ 
 
     return (
         <div className='auth'>
