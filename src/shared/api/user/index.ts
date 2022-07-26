@@ -7,15 +7,17 @@ export const login = async(email: string, password: string) => {
         email: email,
         password: password
     }
-    const response = await fetch(`${host}login`, {
-        method: "POST",
+    const response = await axios({
+        method: 'POST',
+        withCredentials: true,
+        url: `${host}login`,
         headers: {
             "Content-type": "application/json; charset=UTF-8",
         },
-        credentials: 'include',
-        body: JSON.stringify(req),
+        data: JSON.stringify(req)
     })
-    return await response.json()
+    localStorage.setItem('token', response.data.accessToken);
+    return response
 }
 
 export const register = async(email: string, password: string) => {
@@ -41,4 +43,22 @@ export const register = async(email: string, password: string) => {
     //     body: JSON.stringify(req),
     // })
     // return await response.json()
+}
+
+export const checkAuth = async() => {
+
+    try {
+        const response = await axios({
+            method: 'GET',
+            withCredentials: true,
+            url: `${host}refresh`,
+            headers: {
+                "Content-type": "application/json; charset=UTF-8",
+            }
+        })
+        localStorage.setItem('token', response.data.accessToken);
+        return true
+    } catch(e) {
+        console.log(e);
+    }
 }

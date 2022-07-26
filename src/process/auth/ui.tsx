@@ -154,7 +154,8 @@ export const Auth = () => {
                         <div className='auth__loginControl'>
                             <Tooltip disableHoverListener={validateField.email.isValid && validateField.password.isValid ? true : false} title="fill the form">
                                 <span>
-                                    <Button variant='contained' onClick={authentication} className='auth__loginButton'>
+                                    <Button disabled={validateField.email.isValid && validateField.password.isValid ? false : true}
+                                            variant='contained' onClick={authentication} className='auth__loginButton'>
                                         Войти
                                     </Button>
                                 </span>
