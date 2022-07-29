@@ -51,13 +51,14 @@ export const Auth = () => {
     
     const authentication = async () => {
         try {
-            const isAuth = await login(authField.email, authField.password)
+            await login(authField.email, authField.password)
             dispatch(setAuth(true))
-        } catch(e) {
-            console.log(e)
+        } catch(message) {
+            const error = message as string
+            setValidateField({ ...validateField, email: { isValid: false, error: error } })
         }
     }
- 
+
 
     return (
         <div className='auth'>
@@ -154,8 +155,8 @@ export const Auth = () => {
                         <div className='auth__loginControl'>
                             <Tooltip disableHoverListener={validateField.email.isValid && validateField.password.isValid ? true : false} title="fill the form">
                                 <span>
-                                    <Button disabled={validateField.email.isValid && validateField.password.isValid ? false : true}
-                                            variant='contained' onClick={authentication} className='auth__loginButton'>
+                                    <Button disabled={authField.email && authField.password ? false : true} 
+                                    variant='contained' onClick={authentication} className='auth__loginButton'>
                                         Войти
                                     </Button>
                                 </span>

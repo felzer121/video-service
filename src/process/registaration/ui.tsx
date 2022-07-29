@@ -14,9 +14,10 @@ import { DarkFilled } from '../../shared/darkFilled'
 import { SubButton } from '../../shared/subButton'
 import './styles.scss'
 import { Link } from 'react-router-dom'
-import registrationFon from '../../shared/assets/registration.jpg'
 import { register } from '../../shared/api/user'
-import axios, {AxiosError} from 'axios';
+import Happy from './fon.svg?component'
+import { useDispatch } from 'react-redux'
+import { setAuth } from '../../shared/store/user/userSlice'
 
 interface authField {
     name: string
@@ -34,6 +35,7 @@ interface validAuthField {
 
 export const Registration = () => {
 
+    const dispatch = useDispatch()
     const [authField, setAuthField] = React.useState<authField>({ name: '', serdName: '', email: '', password: '' })
     const [validateField, setValidateField] = React.useState<validAuthField>({
         name: { isValid: null },
@@ -54,22 +56,18 @@ export const Registration = () => {
     
     const registration = async () => {
         try {
-            await register(authField.email, authField.password)
-        } catch(err) {
-            if (axios.isAxiosError(err)) {
-                const error = err as AxiosError
-                if (error.response) {
-                    const message = typeof(error.response?.data) === 'string' ? error.response?.data : ''
-                    setValidateField({ ...validateField, email: { isValid: false, error: message } })
-                }
-            }
+            const afs = await register(authField.email, authField.password)
+            dispatch(setAuth(true))
+        } catch(message) {
+            const error = message as string
+            setValidateField({ ...validateField, email: { isValid: false, error: error } })
         }
     }
 
     return (
         <div className='registration'>
-            <div className='registration__background'>
-                <img src={registrationFon} />
+            <div className='auth__background'>
+                <Happy />
             </div>
             <div className='registration__form'>
                 <div className='registration__formContainer'>

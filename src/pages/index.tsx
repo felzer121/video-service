@@ -39,7 +39,7 @@ export const Routing = () => {
                 <animated.div style={styles}>
                     <Routes>
                         <Route path="/" element={isAuth ? <Home /> : <Auth />} />
-                        <Route path="/registration" element={<Registration />} /> 
+                        <Route path="/registration" element={isAuth ? <Home /> : <Registration />} /> 
                     </Routes>
                 </animated.div>
             ))}
