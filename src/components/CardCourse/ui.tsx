@@ -14,7 +14,6 @@ interface CardCourseProps {
 
 export const CardCourse = ({title, subscribe, tagName}: CardCourseProps) => {
     const tag = tags.get(tagName)
-    console.log(tag)
     return (
         <div className='cardCourse'>
             <img src={ preview } className='cardCourse__preview' alt="" />

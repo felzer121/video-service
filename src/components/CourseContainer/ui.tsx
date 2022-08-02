@@ -1,6 +1,9 @@
 import React from "react";
 import { CardCourse } from "../CardCourse/ui";
 import './style.scss'
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+import 'swiper/css';
 
 export const CourseContainer = () => {
 
@@ -18,7 +21,15 @@ export const CourseContainer = () => {
                 <h2>Популярное</h2>
             </div>
             <div className="courseContainer__course">
-                {courses.map(course => <CardCourse title={course.title} subscribe={course.subscribe} tagName={course.tagName} />)}
+                <Swiper
+                    spaceBetween={35}
+                    slidesPerView={4}
+                    onSlideChange={() => console.log('slide change')}
+                    onSwiper={(swiper) => console.log(swiper)}
+                  >
+                    {courses.map(course => <SwiperSlide><CardCourse title={course.title} subscribe={course.subscribe} tagName={course.tagName} /></SwiperSlide>)}
+                  </Swiper>
+                
             </div>
             
         </div>

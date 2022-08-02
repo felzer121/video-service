@@ -1,5 +1,8 @@
 .header {
-    padding: 0 100px;
+    padding: 0 130px;
     height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     border-bottom: solid 1px var(--dark-mode-line);
 }

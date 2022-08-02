@@ -21,6 +21,19 @@ const theme = createTheme({
       disabled: '#000'
     }
   },
+  typography: {
+    h4: {
+      fontFamily: 'Inter, sans-serif',
+      fontSize: '18px',
+      fontWeight: 700
+    },
+    h5: {
+      fontFamily: 'Inter, sans-serif',
+      fontSize: '14px',
+      color: '#C4C4C4',
+      fontWeight: 400
+    },
+  },
 });
 
 

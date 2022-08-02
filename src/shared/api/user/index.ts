@@ -15,7 +15,7 @@ export const login = async(email: string, password: string) => {
         throw errorHandle(error)
     }
 }
-    
+
 export const register = async(email: string, password: string) => {
     const request = {
         email: email,

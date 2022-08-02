@@ -21,6 +21,7 @@
     "react-router-dom": "^6.3.0",
     "react-spring": "^9.4.5",
     "sass": "^1.52.2",
+    "swiper": "^8.3.2",
     "vite-tsconfig-paths": "^3.5.0"
   },
   "devDependencies": {
