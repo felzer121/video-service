@@ -1,0 +1,52 @@
+.cardCourse {
+    max-width: 450px;
+    width: 100%;
+    height: 100%;
+    box-shadow: 4px 4px 20px 2px rgba(226, 226, 226, 0.1);
+    border-radius: 4px;
+    &__preview {
+        border-bottom: solid 2px #F1C40F;
+        border-radius: 4px 4px 0 0;
+    }
+    &__about {
+        padding: 0 15px;
+        &-info {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: solid 1px var(--dark-mode-line);
+        }
+        &-tag {
+            display: flex;
+            height: 50px;
+            align-items: center;
+            &-elem {
+                padding: 4px 15px;
+                border-radius: 15px;
+                color: #FFFFFF;
+                &[data-tag="javascript"]{
+                    background-color: #4807EA;
+                }
+            }
+        }
+        &-subscribe {
+            display: flex;
+            align-items: center;
+        }
+        &-title {
+            margin: 8px 0;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            color: #FFFFFF;
+            font-size: 18px;
+        }
+        &-userSubscribe {
+            color: #C4C4C4;
+            margin: 8px 0;
+            display: flex;
+            align-items: center;
+            &-count {
+                margin-left: 5px;
+            }
+        }
+    }
+}
