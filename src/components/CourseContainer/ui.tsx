@@ -4,6 +4,7 @@ import './style.scss'
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
+import { Typography } from "@mui/material";
 
 export const CourseContainer = () => {
 
@@ -18,7 +19,8 @@ export const CourseContainer = () => {
     return (
         <div className="courseContainer">
             <div className="courseContainer__controller">
-                <h2>Популярное</h2>
+                <Typography variant="h6">Самое интересное</Typography>
+                <Typography variant="h2">Популярные курсы</Typography>
             </div>
             <div className="courseContainer__course">
                 <Swiper
@@ -29,7 +31,6 @@ export const CourseContainer = () => {
                   >
                     {courses.map(course => <SwiperSlide><CardCourse title={course.title} subscribe={course.subscribe} tagName={course.tagName} /></SwiperSlide>)}
                   </Swiper>
-                
             </div>
             
         </div>

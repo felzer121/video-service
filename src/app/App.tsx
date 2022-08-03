@@ -22,6 +22,11 @@ const theme = createTheme({
     }
   },
   typography: {
+    h2: {
+      fontFamily: 'Inter, sans-serif',
+      fontSize: '28px',
+      fontWeight: 700
+    },
     h4: {
       fontFamily: 'Inter, sans-serif',
       fontSize: '18px',
@@ -32,6 +37,18 @@ const theme = createTheme({
       fontSize: '14px',
       color: '#C4C4C4',
       fontWeight: 400
+    },
+    h6: {
+      fontFamily: 'Inter, sans-serif',
+      fontSize: '14px',
+      color: '#C4C4C4',
+      fontWeight: 400,
+      '&:after': {
+        content: '" ]"'
+      },
+      '&:before': {
+        content: '"[ "'
+      }
     },
   },
 });
