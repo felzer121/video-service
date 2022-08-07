@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../shared/store";
 import { checkAuth } from "../shared/api/user"
 import { setAuth } from '../shared/store/user/userSlice'
+import { Settings } from "../process/settings/ui";
 // const Auth = lazy(() => import("./AuthPage"));
 // const Registration = lazy(() => import("./RegistrationPage"));
 
@@ -39,7 +40,8 @@ export const Routing = () => {
                 <animated.div style={styles}>
                     <Routes>
                         <Route path="/" element={isAuth ? <Home /> : <Auth />} />
-                        <Route path="/registration" element={isAuth ? <Home /> : <Registration />} /> 
+                        <Route path="/registration" element={isAuth ? <Home /> : <Registration />} />
+                        <Route path="/settings" element={isAuth ? <Settings /> : <Auth />} /> 
                     </Routes>
                 </animated.div>
             ))}

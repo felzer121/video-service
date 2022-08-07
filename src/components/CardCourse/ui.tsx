@@ -20,7 +20,7 @@ const trans = (x:number, y:number, s:number) => `perspective(${window.innerWidth
 export const CardCourse = ({title, subscribe, tagName}: CardCourseProps) => {
     const tag = tags.get(tagName)
 
-    const [props, set] = useSpring(() => ({ xys: [0, 0, 2], config: { mass: 5, tension: 350, friction: 40 } }))
+    const [props, set] = useSpring(() => ({ xys: [0, 0, 1], config: { mass: 5, tension: 350, friction: 40 } }))
  
     return (
         <animated.div onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}

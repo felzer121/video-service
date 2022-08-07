@@ -7,6 +7,7 @@ import { useSpring, animated } from "react-spring";
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import PersonIcon from '@mui/icons-material/Person';
+import { NavLink } from 'react-router-dom';
 
 const UserList = styled(List)<{ component?: React.ElementType }>({
     '&': {
@@ -25,7 +26,7 @@ const UserList = styled(List)<{ component?: React.ElementType }>({
       marginRight: 10,
     },
     '& .MuiListItemText-root': {
-        color: '#fff'
+        color: 'inherit',
     },
     '& .MuiSvgIcon-root': {
       fontSize: 20,
@@ -33,9 +34,9 @@ const UserList = styled(List)<{ component?: React.ElementType }>({
 });
 
 const dataUser = [
-    { icon: <PersonIcon />, label: 'Личный кабинет' },
-    { icon: <FavoriteIcon />, label: 'Список желаний' },
-  ];
+    { icon: <PersonIcon />, label: 'Личный кабинет', route: '/settings' },
+    { icon: <FavoriteIcon />, label: 'Список желаний', route: '/wishlist' },
+];
 
 export const UserPerformance = () => {
     const [active, setActive] = React.useState(false)
@@ -73,10 +74,12 @@ export const UserPerformance = () => {
                 <UserList>
                     {dataUser.map((elem) => (
                         <ListItem disablePadding>
-                             <ListItemButton component="button">
-                                <ListItemIcon>{elem.icon}</ListItemIcon>
-                                <ListItemText primary={elem.label} />
-                             </ListItemButton>
+                            <NavLink to={elem.route} style={{width: '100%'}}>
+                                <ListItemButton component="button" style={{width: '100%'}}>
+                                    <ListItemIcon>{elem.icon}</ListItemIcon>
+                                    <ListItemText primary={elem.label} />
+                                </ListItemButton>  
+                            </NavLink>
                         </ListItem>
                     ))}
                 </UserList>
