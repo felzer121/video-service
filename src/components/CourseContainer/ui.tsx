@@ -28,6 +28,7 @@ export const CourseContainer = () => {
                 <Swiper
                     style={{padding: '0 130px'}}
                     spaceBetween={35}
+                    grabCursor
                     slidesPerView={4}
                     onSlideChange={() => console.log('slide change')}
                     onSwiper={(swiper) => console.log(swiper)}

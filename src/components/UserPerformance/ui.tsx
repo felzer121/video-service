@@ -34,8 +34,8 @@ const UserList = styled(List)<{ component?: React.ElementType }>({
 });
 
 const dataUser = [
-    { icon: <PersonIcon />, label: 'Личный кабинет', route: '/settings' },
-    { icon: <FavoriteIcon />, label: 'Список желаний', route: '/wishlist' },
+    { id: 1, icon: <PersonIcon />, label: 'Личный кабинет', route: '/settings' },
+    { id: 2, icon: <FavoriteIcon />, label: 'Список желаний', route: '/wishlist' },
 ];
 
 export const UserPerformance = () => {
@@ -73,7 +73,7 @@ export const UserPerformance = () => {
             >
                 <UserList>
                     {dataUser.map((elem) => (
-                        <ListItem disablePadding>
+                        <ListItem disablePadding key={elem.id}>
                             <NavLink to={elem.route} style={{width: '100%'}}>
                                 <ListItemButton component="button" style={{width: '100%'}}>
                                     <ListItemIcon>{elem.icon}</ListItemIcon>
