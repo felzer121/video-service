@@ -8,13 +8,12 @@ import { PageWrapper } from "../../components/PageWrapper/ui"
 
 export const Home = () => {
     return (
-        <PageWrapper>
-            <Header />
+        <>
             <CourseContainer />
             <Container>
                 <BlockTitle title="Популярные темы для изучения" subTitle="Трендовые технологии" marginTop="30px" />
                 <ContainerTheme />
             </Container>
-        </PageWrapper>
+        </>
     )
 }

@@ -1,5 +1,9 @@
 :root {
-    --dark-mode-fone: #16110D;
-    --dark-mode-line: #1E1E24;
+    --dark-mode-fone: #1E1F23;
+    --dark-mode-line: rgba(255,255,255, .1);
     --color-primary: #108ee9;
+    --submenu-width: 80px;
+    --container-padding-desctop: 0 calc(var(--submenu-width) + 130px) 0 calc(130px - var(--submenu-width)); 
+    --container-padding-tablet: 0 calc(var(--submenu-width) + 30px) 0 30px;
+    --container-padding-mobile: 0 10px 0 10px;
 }

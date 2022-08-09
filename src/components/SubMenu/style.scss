@@ -1,0 +1,30 @@
+.subMenu {
+    max-width: 80px;
+    width: 100%;
+    background-color: #000;
+    padding-top: 70px;
+    &__content {
+        width: 80px;    
+        display: flex;
+        flex-direction: column;
+    }
+    &__item:not(:first-child) {
+        padding: 8px 0;
+        ::after {
+            content: '';
+            height: 4px;
+            width: 4px;
+            top: -8px;
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+    }
+    &__item:first-child {
+        padding-bottom: 8px;
+    }
+}
+@media (max-width: 500px) {
+    .subMenu {
+        display: none;
+    }
+}

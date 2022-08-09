@@ -1,8 +1,30 @@
 .header {
-    padding: 0 130px;
     height: 70px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     border-bottom: solid 1px var(--dark-mode-line);
+    padding: var(--container-padding-desctop);
+    &__burger {
+        margin-right: 1em;
+        display: none;
+    }
+    &__sidenav {
+        display: flex;
+        align-items: center;
+    }
+}
+
+@media (max-width: 1200px) and (min-width: 500px) {
+    .header {
+        padding: var(--container-padding-tablet);
+    }
+}
+@media (max-width: 500px) {
+    .header {
+        padding: var(--container-padding-mobile);
+    }
+    .header__burger {
+        display: block;
+    }
 }

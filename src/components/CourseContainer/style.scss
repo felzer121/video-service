@@ -1,5 +1,20 @@
 .courseContainer {
-    &__course {
-        // padding-left: 130px;
+    &__swiper {
+        padding: var(--container-padding-desctop)!important;
+    }
+}
+
+@media (max-width: 1200px) and (min-width: 500px) {
+    .courseContainer {
+        &__swiper {
+            padding: var(--container-padding-tablet)!important;
+        }
+    }
+}
+@media (max-width: 500px) {
+    .courseContainer {
+        &__swiper {
+            padding: var(--container-padding-mobile)!important;
+        }
     }
 }

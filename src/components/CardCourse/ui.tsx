@@ -36,7 +36,7 @@ export const CardCourse = ({title, subscribe, tagName}: CardCourseProps) => {
                         </p> 
                     </div>
                     <div className='cardCourse__about-subscribe'>
-                        <Button variant="text" startIcon={<GroupAddIcon />}>Подписаться</Button>
+                        <Button variant="text" startIcon={<GroupAddIcon />}>Перейти</Button>
                     </div>
                 </div>
                 <div className='cardCourse__about-tag'>

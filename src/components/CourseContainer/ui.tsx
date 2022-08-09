@@ -2,12 +2,9 @@ import React from "react";
 import { CardCourse } from "../CardCourse/ui";
 import './style.scss'
 import { Swiper, SwiperSlide } from 'swiper/react';
-
 import 'swiper/css';
-import { Typography } from "@mui/material";
 import { BlockTitle } from "../BlockTitle/ui";
 import { Container } from "../Container/ui";
-import { CardTheme } from "../CardTheme/ui";
 
 export const CourseContainer = () => {
 
@@ -26,10 +23,30 @@ export const CourseContainer = () => {
             </Container>
             <div className="courseContainer__course">
                 <Swiper
-                    style={{padding: '0 130px'}}
-                    spaceBetween={35}
+                    className="courseContainer__swiper"
+                    breakpoints={{
+                        1800: {
+                            slidesPerView: 4,
+                            spaceBetween: 35
+                        },
+                        1400: {
+                            slidesPerView: 3,
+                            spaceBetween: 35
+                        },
+                        900: {
+                            slidesPerView: 2,
+                            spaceBetween: 35
+                        },
+                        600: {
+                            slidesPerView: 2,
+                            spaceBetween: 35
+                        },
+                        0: {
+                            slidesPerView: 1,
+                            spaceBetween: 35
+                        },
+                    }}
                     grabCursor
-                    slidesPerView={4}
                     onSlideChange={() => console.log('slide change')}
                     onSwiper={(swiper) => console.log(swiper)}
                   >

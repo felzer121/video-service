@@ -1,4 +1,9 @@
 .pageWrapper {
     min-height: 100vh;
-    background-color: var(--dark-mode-fone);
+    display: flex;
+    overflow: hidden;
+    &__content {
+        width: 100%;
+        background-color: var(--dark-mode-fone);
+    }
 }

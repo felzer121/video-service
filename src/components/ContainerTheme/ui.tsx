@@ -16,7 +16,7 @@ export const ContainerTheme = () => {
 
     return (
         <div className="containerTheme">
-            <Grid container spacing={{ xs: 1, md: 4, lg: 4 }} columns={{ xs: 4, sm: 8, md: 12, lg: 12 }}>
+            <Grid container spacing={{ xs: 3, md: 3, lg: 3, colXl: 4 }} columns={{ xs: 2, sm: 8, md: 12, lg: 12 }}>
                 {themes.map((theme) => (
                     <Grid item xs={2} sm={4} md={4} lg={3} key={theme.id}>
                         <CardTheme />
