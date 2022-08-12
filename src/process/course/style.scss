@@ -1,0 +1,51 @@
+.course {
+    margin-top: 40px;
+    &__header {
+        display: flex;
+        &-info {
+            padding: 40px;
+            background-color: #141312;
+            width: 100%;
+        }
+        &-title {
+            padding-top: 8px;
+        }
+        &-preview {
+            max-width: 30%;
+            width: 100%;
+            img {
+                object-fit: cover;
+                width: 100%;
+                height: 100%;
+            }
+        }
+        &-advantage {
+            margin: 40px 0;
+            display: flex;
+            
+            &Block {
+                padding: 0 35px;
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                align-items: center;
+                border-left: solid 1px rgba(#ffffff, .1);
+                height: 60px;
+                &:last-child {
+                    border-right: solid 1px rgba(#ffffff, .1);
+                }
+            }
+        }
+        &-footer {
+            display: flex;
+            justify-content: space-between;
+            &Author {
+                display: flex;
+                align-items: center;
+                &Info {
+                    margin-left: 13px;
+                }
+            }
+        }
+    }
+}

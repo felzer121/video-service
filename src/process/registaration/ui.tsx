@@ -11,7 +11,7 @@ import {
 import HowToRegIcon from '@mui/icons-material/HowToReg'
 import { validate } from '../../shared/validate'
 import { DarkFilled } from '../../shared/darkFilled'
-import { SubButton } from '../../shared/subButton'
+import { SubButton } from '../../shared/component/subButton'
 import './styles.scss'
 import { Link } from 'react-router-dom'
 import { register } from '../../shared/api/user'

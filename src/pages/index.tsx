@@ -9,6 +9,7 @@ import { RootState } from "../shared/store";
 import { checkAuth } from "../shared/api/user"
 import { setAuth } from '../shared/store/user/userSlice'
 import { Settings } from "../process/settings/ui";
+import CoursePage from "./СoursePage/ui";
 // const Auth = lazy(() => import("./AuthPage"));
 // const Registration = lazy(() => import("./RegistrationPage"));
 
@@ -41,7 +42,8 @@ export const Routing = () => {
                     <Routes>
                         <Route path="/" element={isAuth ? <Home /> : <Auth />} />
                         <Route path="/registration" element={isAuth ? <Home /> : <Registration />} />
-                        <Route path="/settings" element={isAuth ? <Settings /> : <Auth />} /> 
+                        <Route path="/settings" element={isAuth ? <Settings /> : <Auth />} />
+                        <Route path="/course/:id" element={isAuth ? <CoursePage /> : <Auth />} />
                     </Routes>
                 </animated.div>
             ))}

@@ -19,7 +19,7 @@ export const SubMenu = () => {
         <div className='subMenu'>
            <div className='subMenu__content'>
                 {menu.map(item => (
-                    <NavLink to={item.to} className="subMenu__item">
+                    <NavLink to={item.to} key={item.id} className="subMenu__item">
                         <Button variant="text" color="secondary" sx={{width: '100%', height: '60px'}}>
                             {item.icon}
                         </Button>

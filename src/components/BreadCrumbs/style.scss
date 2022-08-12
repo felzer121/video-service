@@ -1,0 +1,18 @@
+.breadCrumbs {
+    display: flex;
+    color: #C4C4C4;
+    align-items: center; 
+    &__link {
+        font-size: 14px;
+        line-height: 24px;
+        text-transform: uppercase;
+        font-weight: 500;
+    }
+    &__block {
+        display: flex;
+        align-items: center;
+    }
+    &__arrow {
+        padding: 0 5px;
+    }
+}
