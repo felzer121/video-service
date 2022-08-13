@@ -1,6 +1,6 @@
 import { Button, Typography } from '@mui/material';
 import React from 'react';
-import { SubButton } from '../../shared/subButton';
+import { SubButton } from '../../shared/component/subButton';
 import './style.scss'
 interface UserTitleProps {
     title: string
@@ -33,7 +33,6 @@ export const UserTitle = ({title, subTitle, buttonTitle}:UserTitleProps) => {
                         <Typography variant='h4'>{item.title}</Typography>
                     </div> 
                 ))}
-                
             </div>
         </div>
     );

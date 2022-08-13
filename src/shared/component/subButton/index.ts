@@ -7,6 +7,7 @@ export const SubButton = styled(Button)({
     whiteSpace: 'nowrap',
     fontFamily: 'Inter',
     fontWeight: '600',
+    padding: '0 25px',
     height: '48px',
     textDecoration: 'none',
     backgroundColor: 'rgba(255, 255, 255, 0.05)'
