@@ -34,7 +34,7 @@ const UserList = styled(List)<{ component?: React.ElementType }>({
 });
 
 const dataUser = [
-    { id: 1, icon: <PersonIcon />, label: 'Личный кабинет', route: '/settings' },
+    { id: 1, icon: <PersonIcon />, label: 'Личный кабинет', route: '/user' },
     { id: 2, icon: <FavoriteIcon />, label: 'Список желаний', route: '/wishlist' },
 ];
 

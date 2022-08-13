@@ -1,0 +1,15 @@
+.user {
+    width: 100%;
+    display: flex;
+    margin-top: 40px;
+    &__icon {
+        img {
+            width: 160px;
+            height: 160px;
+        }
+    }
+    &__container {
+        width: 100%;
+        margin-left: 40px;
+    }
+}

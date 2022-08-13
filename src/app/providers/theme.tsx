@@ -27,7 +27,7 @@ const theme = createTheme({
       },
       h5: {
         fontFamily: 'Inter, sans-serif',
-        fontSize: '14px',
+        fontSize: '16px',
         color: '#C4C4C4',
         fontWeight: 400
       },
