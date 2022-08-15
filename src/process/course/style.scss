@@ -6,12 +6,13 @@
             padding: 40px;
             background-color: #141312;
             width: 100%;
+            box-sizing: border-box;
         }
         &-title {
             padding-top: 8px;
         }
         &-preview {
-            max-width: 30%;
+            max-width: 35%;
             width: 100%;
             img {
                 object-fit: cover;
@@ -45,6 +46,97 @@
                 &Info {
                     margin-left: 13px;
                 }
+            }
+        }
+    }
+    &__body {
+        display: flex;
+        &Content {
+            width: 100%;
+            margin-top: 40px;
+        }
+        &-elem {
+            border-radius: 4px;
+            background-color: rgba(#fff, .05);
+        }
+        &About {
+            padding: 70px 70px 40px 70px;
+            &-item {
+                display: flex;
+                margin-bottom: 30px;
+                p {
+                 max-width: 350px;   
+                }
+            }
+            &Content {
+                margin-top: 40px;
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+            }
+            &-icon {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #000;
+                font-weight: 800;
+                width: 30px;
+                margin-right: 20px;
+                border-radius: 4px;
+                height: 30px;
+                background: #F1C40F;
+            }
+        }
+        &CourseContent {
+            &-panel {
+               margin: 20px 0; 
+            }
+        }
+        &Buy {
+            padding: 0 40px;
+            max-width: 35%;
+            width: 100%;
+            box-sizing: border-box;
+            &-container {
+                padding: 40px;
+                margin-top: -30px;
+                border-radius: 4px;
+                background-color: var(--dark-mode-container);
+            }
+            &-knowledge {
+                padding: 9px 18px;
+                background: rgba(255, 255, 255, 0.1);
+                border-radius: 30px;
+                &:not(:last-child) {
+                    margin-right: 15px;
+                }
+            }
+            &-elem {
+                display: flex;
+                align-items: center;
+                padding-bottom: 14px;
+            }
+            &-footer {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+            &-icon {
+                display: flex;
+                margin-right: 8px;
+            }
+            &-line {
+                width: 200px;
+                margin: auto;
+                background: var(--dark-mode-line);
+                height: 1px;
+            }
+            &CourseСontents {
+                margin: 20px 0 10px 0;
+            }
+            &KnowledgeСontents {
+                display: flex;
+                margin: 10px 0 25px 0;
             }
         }
     }

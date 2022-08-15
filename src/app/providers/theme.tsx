@@ -43,6 +43,16 @@ const theme = createTheme({
           content: '"[ "'
         }
       },
+      body2: {
+        fontFamily: 'Inter, sans-serif',
+        fontSize: '16px',
+        fontWeight: 300,
+      },
+      body1: {
+        fontFamily: 'Inter, sans-serif',
+        fontSize: '16px',
+        fontWeight: 400,
+      }
     },
 });
 

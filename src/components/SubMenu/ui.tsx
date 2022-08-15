@@ -9,9 +9,9 @@ import { Button } from '@mui/material';
 
 const menu = [
     { id: 1, to: "/", icon: <GridViewRoundedIcon sx={{ fontSize: 28 }} /> },
-    { id: 2, to: "/", icon: <SchoolRoundedIcon sx={{ fontSize: 28 }} /> },
-    { id: 3, to: "/", icon: <MessageRoundedIcon sx={{ fontSize: 28 }} /> },
-    { id: 4, to: "/", icon: <TaskRoundedIcon sx={{ fontSize: 28 }} /> }
+    { id: 2, to: "/course", icon: <SchoolRoundedIcon sx={{ fontSize: 28 }} /> },
+    { id: 3, to: "/message", icon: <MessageRoundedIcon sx={{ fontSize: 28 }} /> },
+    { id: 4, to: "/task", icon: <TaskRoundedIcon sx={{ fontSize: 28 }} /> }
 ]
 
 export const SubMenu = () => {
@@ -19,7 +19,8 @@ export const SubMenu = () => {
         <div className='subMenu'>
            <div className='subMenu__content'>
                 {menu.map(item => (
-                    <NavLink to={item.to} key={item.id} className="subMenu__item">
+                    <NavLink to={item.to} key={item.id} 
+                             className={({ isActive }) => isActive ? "subMenu__active subMenu__item" : "subMenu__item"}>
                         <Button variant="text" color="secondary" sx={{width: '100%', height: '60px'}}>
                             {item.icon}
                         </Button>

@@ -1,0 +1,45 @@
+.message {
+    margin: 40px 0;
+    &__users {
+        padding-right: 20px;
+        border-right: solid 1px var(--dark-mode-line);
+        max-width: 300px;
+        height: calc(100vh - 71px - 80px);
+        width: 100%;
+        &Chats {
+            margin-top: 10px!important;
+            padding: 18px!important;
+            display: flex;
+            &-info {
+                margin-left: 20px;
+            }
+            &-active {
+                background: rgba(0, 0, 0, 0.4);
+            }
+            &-title {
+                display: flex;
+                color: #fff;
+                justify-content: space-between;
+            }
+            &-message {
+                margin-top: .3em;
+                width: 200px;
+                &Txt {
+                    color: #C4C4C4;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                }
+            }
+            img {
+                max-width: 48px;
+                max-height: 48px;
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+    &__chat {
+        padding-left: 20px;
+    }
+}
