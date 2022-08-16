@@ -1,5 +1,6 @@
 .message {
     margin: 40px 0;
+    display: flex;
     &__users {
         padding-right: 20px;
         border-right: solid 1px var(--dark-mode-line);
@@ -40,6 +41,58 @@
         }
     }
     &__chat {
+        width: 100%;
         padding-left: 20px;
+        &Title {
+            box-sizing: border-box;
+            padding: 8px 24px;
+            border-radius: 4px;
+            height: 64px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: rgba(#fff, .05);
+            &User {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+        &Message {
+            position: relative;
+            max-width: fit-content;
+            display: flex;
+            margin-bottom: 20px;
+            img {
+                margin-right: 10px;
+                border-radius: 4px;
+                max-width: 48px;
+                max-height: 48px;
+                width: 100%;
+                height: 100%;
+            }
+            &-block {
+                padding: 18px 48px 18px 28px;
+                background: rgba(79, 79, 79, 0.25);
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                border-radius: 0px 10px 10px 10px;
+            }
+            &-time {
+                position: absolute;
+                right: 10px;
+                bottom: 6px;
+                font-size: 12px;
+                color: #C4C4C4;
+            }
+        }
+        &Box {
+            height: calc(100% - 64px - 62px);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+        &Controller {
+            height: 62px;
+        }
     }
 }

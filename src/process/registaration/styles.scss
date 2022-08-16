@@ -11,7 +11,14 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        padding: 0 15px;
         background-color: #16110D;
+        @media (max-width: 1600px) {
+            max-width: 650px;
+        }
+        @media (max-width: 1200px) {
+            max-width: 100%;
+        }
         &Control {
             margin-top: 2em;
             display: flex;

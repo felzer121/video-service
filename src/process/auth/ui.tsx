@@ -17,6 +17,7 @@ import { setAuth } from '../../shared/store/user/userSlice'
 import { NavLink } from 'react-router-dom'
 import Happy from './fon.svg?component'
 import { login } from '../../shared/api/user'
+import { MainButton } from '../../shared/component/MainButton'
 
 interface authField {
     email: string
@@ -155,10 +156,10 @@ export const Auth = () => {
                         <div className='auth__loginControl'>
                             <Tooltip disableHoverListener={validateField.email.isValid && validateField.password.isValid ? true : false} title="fill the form">
                                 <span>
-                                    <Button disabled={authField.email && authField.password ? false : true} 
-                                    variant='contained' onClick={authentication} className='auth__loginButton'>
+                                    <MainButton disabled={authField.email && authField.password ? false : true} 
+                                            variant='contained' onClick={authentication} className='auth__loginButton'>
                                         Войти
-                                    </Button>
+                                    </MainButton>
                                 </span>
                             </Tooltip>
                         </div>

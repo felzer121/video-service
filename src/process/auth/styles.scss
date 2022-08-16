@@ -18,12 +18,21 @@
   }
   &__login {
     top: 0;
-    width: 750px;
+    max-width: 750px;
+    width: 100%;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #16110D;
+    padding: 0 15px;
+    box-sizing: border-box;
+    @media (max-width: 1600px) {
+      max-width: 650px;
+    }
+    @media (max-width: 1200px) {
+      max-width: 100%;
+    }
     &Title h4 {
       font-size: 36px;
       color: #FFFFFF;

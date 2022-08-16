@@ -6,6 +6,7 @@ import userImg from '../../shared/assets/user.jpg'
 import SearchIcon from '@mui/icons-material/Search';
 import './style.scss'
 import { SubButton } from '../../shared/component/subButton';
+import { ChangeCircleTwoTone } from '@mui/icons-material';
 
 const chats = [
     {id: '1', name: 'Estel', img: userImg, lastMessage: 'React - The Complete Guide (incl Hooks, React Router, Redux)', lastTime: '16:20'},
@@ -15,6 +16,14 @@ const chats = [
 export const Message = () => {
 
     const [chatId, setChatId] = React.useState('1')
+    const [chat, setChat] = React.useState({
+        username: 'Estel',
+        status: 'был в сети 15 мин назад',
+        messages: [
+            {user: userImg, message: '14 практических задан...', time: '12:19'},
+            {user: userImg, message: 'asfafafsawqrt', time: '12:20'}
+        ]
+    })
 
     const handleClick = (id: string) => {
         console.log(id)
@@ -62,7 +71,28 @@ export const Message = () => {
                     ))}
                 </div>
                 <div className='message__chat'>
-                        
+                    <div className='message__chatTitle'>
+                        <div className='message__chatTitleUser'>
+                            <Typography variant='h4'>{chat.username}</Typography>
+                            <Typography variant='h5'>{chat.status}</Typography>
+                        </div>
+                    </div>
+                    <div className='message__chatBox'>
+                        {chat.messages.map(message => (
+                            <div className='message__chatMessage'>
+                                <img src={userImg} />
+                                <div className='message__chatMessage-block'>
+                                    <Typography variant='body1'>{message.message}</Typography>
+                                    <div className='message__chatMessage-time'>
+                                        <span>{message.time}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}   
+                    </div>
+                    <div className='message__chatController'>
+                            cc
+                    </div>
                 </div>
             </div>
         </Container>

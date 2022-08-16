@@ -18,6 +18,7 @@ import { register } from '../../shared/api/user'
 import Happy from './fon.svg?component'
 import { useDispatch } from 'react-redux'
 import { setAuth } from '../../shared/store/user/userSlice'
+import { MainButton } from '../../shared/component/MainButton'
 
 interface authField {
     name: string
@@ -224,10 +225,10 @@ export const Registration = () => {
                             </Link>
                             <Tooltip disableHoverListener={validateField.name.isValid && validateField.serdName.isValid && validateField.email.isValid && validateField.password.isValid ? true : false} title="fill the form">
                                 <span>
-                                    <Button disabled={validateField.name.isValid && validateField.serdName.isValid && validateField.email.isValid && validateField.password.isValid ? false : true}
+                                    <MainButton disabled={validateField.name.isValid && validateField.serdName.isValid && validateField.email.isValid && validateField.password.isValid ? false : true}
                                             variant='contained' onClick={registration} className='auth__loginButton'>
                                         Регистрация
-                                    </Button>
+                                    </MainButton>
                                 </span>
                             </Tooltip>
                         </div>
