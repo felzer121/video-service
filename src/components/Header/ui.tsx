@@ -4,7 +4,7 @@ import { UserPerformance } from '../UserPerformance/ui'
 import './style.scss'
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import { Button } from '@mui/material';
-import { Search } from '../../shared/component/Search';
+import { Search } from '../../shared/component/Search/ui';
 
 export const Header = () => {
     return (

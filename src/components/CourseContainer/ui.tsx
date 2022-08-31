@@ -47,8 +47,6 @@ export const CourseContainer = () => {
                         },
                     }}
                     grabCursor
-                    onSlideChange={() => console.log('slide change')}
-                    onSwiper={(swiper) => console.log(swiper)}
                   >
                     {courses.map(course => <SwiperSlide key={course.id}><CardCourse id={course.id} title={course.title} subscribe={course.subscribe} tagName={course.tagName} /></SwiperSlide>)}
                   </Swiper>

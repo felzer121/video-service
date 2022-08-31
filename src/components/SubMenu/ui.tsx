@@ -9,7 +9,7 @@ import { Button } from '@mui/material';
 
 const menu = [
     { id: 1, to: "/", icon: <GridViewRoundedIcon sx={{ fontSize: 28 }} /> },
-    { id: 2, to: "/course", icon: <SchoolRoundedIcon sx={{ fontSize: 28 }} /> },
+    { id: 2, to: "/catalog", icon: <SchoolRoundedIcon sx={{ fontSize: 28 }} /> },
     { id: 3, to: "/message", icon: <MessageRoundedIcon sx={{ fontSize: 28 }} /> },
     { id: 4, to: "/task", icon: <TaskRoundedIcon sx={{ fontSize: 28 }} /> }
 ]

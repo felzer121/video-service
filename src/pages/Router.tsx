@@ -2,16 +2,17 @@ import React, { lazy } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import { useTransition , animated } from 'react-spring'
 import Registration from './RegistrationPage/index'
-import Auth from './AuthPage/index'
-import Home from "../pages/HomePage/index";
+import Auth from './AuthPage/ui'
+import Home from "./HomePage/ui";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../shared/store";
 import { checkAuth } from "../shared/api/user"
 import { setAuth } from '../shared/store/user/userSlice'
 import { Settings } from "../process/settings/ui";
-import { UserPage } from '../pages/UserPage/ui'
+import { UserPage } from './UserPage/ui'
 import CoursePage from "./СoursePage/ui";
 import MessagePage from "./MessagePage/ui";
+import CatalogPage from "./CatalogPage/ui";
 // const Auth = lazy(() => import("./AuthPage"));
 // const Registration = lazy(() => import("./RegistrationPage"));
 
@@ -44,9 +45,9 @@ export const Routing = () => {
                     <Routes>
                         <Route path="/" element={isAuth ? <Home /> : <Auth />} />
                         <Route path="/registration" element={isAuth ? <Home /> : <Registration />} />
+                        <Route path="/catalog" element={isAuth ? <CatalogPage /> : <Auth />} />
                         <Route path="/settings" element={isAuth ? <Settings /> : <Auth />} /> 
                         <Route path="/user" element={isAuth ? <UserPage /> : <Auth />} /> 
-                        <Route path="/settings" element={isAuth ? <Settings /> : <Auth />} />
                         <Route path="/course/:id" element={isAuth ? <CoursePage /> : <Auth />} />
                         <Route path="/message" element={isAuth ? <MessagePage /> : <Auth />} />
                     </Routes>

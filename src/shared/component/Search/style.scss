@@ -4,11 +4,13 @@
     max-height: 48px;
     margin: 0 20px;
     &__btn {
-        padding: 0;
+        border-radius: 0!important;
         width: 64px;
     }
     &__input {
         width: 100%;
+        color: #fff;
+        font-family: inherit;
         padding: 0;
         border: 0;
         outline: none;
