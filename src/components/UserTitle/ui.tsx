@@ -1,6 +1,6 @@
 import { Button, Typography } from '@mui/material';
 import React from 'react';
-import { SubButton } from '../../shared/component/subButton';
+import { ButtonFill } from '../../shared/component/ButtonFill';
 import './style.scss'
 interface UserTitleProps {
     title: string
@@ -22,9 +22,9 @@ export const UserTitle = ({title, subTitle, buttonTitle}:UserTitleProps) => {
                     <Typography variant='h2'>{title}</Typography>
                     <Typography variant='h5'>{subTitle}</Typography>
                 </div>
-                <SubButton variant='text'>
+                <ButtonFill variant='text'>
                     {buttonTitle}
-                </SubButton>
+                </ButtonFill>
             </div>
             <div className='userTitleFooter'>
                 {usersInfo.map(item => (

@@ -4,6 +4,7 @@ import { UserPerformance } from '../UserPerformance/ui'
 import './style.scss'
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import { Button } from '@mui/material';
+import { Search } from '../../shared/component/Search';
 
 export const Header = () => {
     return (
@@ -13,9 +14,10 @@ export const Header = () => {
                     <Button variant="text"><MenuRoundedIcon /></Button>
                 </div>
                 <div className='header__logo'>
-                    <NavLink to='/'>logo</NavLink>
+                    <NavLink to='/'>appcurse<span className='header__logo-sub'>_</span></NavLink>
                 </div>
             </div>
+            <Search />
             <UserPerformance />
         </div>
     )

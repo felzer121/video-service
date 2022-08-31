@@ -1,6 +1,5 @@
 .userPerformance {
     display: flex;
-    position: relative;
     cursor: default;
     &__icon {
         margin-right: 10px;
@@ -22,6 +21,10 @@
             top: -8px;
             right: -8px;
         }
+    }
+    &__block {
+        display: flex;
+        position: relative; 
     }
     &__menu {
         position: absolute;

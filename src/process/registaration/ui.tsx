@@ -11,7 +11,6 @@ import {
 import HowToRegIcon from '@mui/icons-material/HowToReg'
 import { validate } from '../../shared/validate'
 import { DarkFilled } from '../../shared/darkFilled'
-import { SubButton } from '../../shared/component/subButton'
 import './styles.scss'
 import { Link } from 'react-router-dom'
 import { register } from '../../shared/api/user'
@@ -19,6 +18,7 @@ import Happy from './fon.svg?component'
 import { useDispatch } from 'react-redux'
 import { setAuth } from '../../shared/store/user/userSlice'
 import { MainButton } from '../../shared/component/MainButton'
+import { ButtonFill } from '../../shared/component/ButtonFill'
 
 interface authField {
     name: string
@@ -219,9 +219,9 @@ export const Registration = () => {
                         </div>
                         <div className='registration__formControl'>
                             <Link to="/" className='registration__link'>
-                                <SubButton variant='text' className='auth__loginButton'>
+                                <ButtonFill variant='text' className='auth__loginButton'>
                                     Назад
-                                </SubButton>
+                                </ButtonFill>
                             </Link>
                             <Tooltip disableHoverListener={validateField.name.isValid && validateField.serdName.isValid && validateField.email.isValid && validateField.password.isValid ? true : false} title="fill the form">
                                 <span>

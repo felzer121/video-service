@@ -5,7 +5,6 @@ import { DarkFilled } from '../../shared/darkFilled';
 import userImg from '../../shared/assets/user.jpg'
 import SearchIcon from '@mui/icons-material/Search';
 import './style.scss'
-import { SubButton } from '../../shared/component/subButton';
 import { ChangeCircleTwoTone } from '@mui/icons-material';
 
 const chats = [

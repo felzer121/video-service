@@ -1,7 +1,7 @@
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles'
 
-export const SubButton = styled(Button)({
+export const ButtonFill = styled(Button)({
   '&': {
     color: '#FFBE2E',
     whiteSpace: 'nowrap',
