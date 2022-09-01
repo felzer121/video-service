@@ -10,7 +10,7 @@ import {
 } from "@mui/material"
 import HowToRegIcon from '@mui/icons-material/HowToReg'
 import { validate } from '../../shared/validate'
-import { DarkFilled } from '../../shared/darkFilled'
+import { DarkFilled } from '../../shared/component/Form/DarkFilled'
 import './styles.scss'
 import { Link } from 'react-router-dom'
 import { register } from '../../shared/api/user'

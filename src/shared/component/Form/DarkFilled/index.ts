@@ -12,6 +12,9 @@ export const DarkFilled = styled(FilledInput)({
   '&:after': {
     borderBottom: '2px solid #FFBE2E'
   },
+  '&.MuiInputLabel-root': {
+    color: '#6D6D6D'
+  },
   '&.Mui-focused': {
     backgroundColor: 'rgba(255, 255, 255, 0.2)'
   },

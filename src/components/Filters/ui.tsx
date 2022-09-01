@@ -1,43 +1,21 @@
-import { Typography, Autocomplete, TextField } from '@mui/material';
-import React from 'react';
-import './style.scss'
 
-interface sortingType {
-    title: string
-    type: string
-    value: Array<{
-        name: string
-        count?: number
-    }>
-}
+import React from 'react';
+import { getSorting } from './getSorting';
+import './style.scss'
+import FileUploadRoundedIcon from '@mui/icons-material/FileUploadRounded';
 
 
 const Filters = () => {
-    
-    const getSorting = (sort: sortingType) => {
-        switch(sort.type) {
-            case 'select' :
-                return <div className='filters__select'>
-                    <Typography variant='h4' sx={{marginBottom: '.5em'}}>{sort.title.toUpperCase()}</Typography>
-                    <Autocomplete
-                        multiple
-                        options={sort.value}
-                        getOptionLabel={(option) => option.name}
-                        renderInput={(params) => <TextField {...params} className='filters__select-input' label="Сортировать по" variant="filled" />}
-                    />
-                </div>
-        }
-    }
 
     const sorting = [
-        {title: 'сортировка', type: 'select', value: [{name: 'новейшие'}, {name: 'популярное'}]},
-        {title: 'авторы', type: 'select', value: [{name: 'Автор1'}, {name: 'Автор2'}]},
-        {title: 'категории', type: 'checkbox', value: [{name: 'Unity', count: 123}, {name: 'C#', count: 12}]}
+        {id: 1, title: 'сортировка', type: 'select', label: 'Сортировать по', value: [{name: 'новейшие'}, {name: 'популярное'}]},
+        {id: 2, title: 'авторы', type: 'multiselect', label: 'Преподаватель курса', value: [{name: 'Автор1'}, {name: 'Автор2'}]},
+        {id: 3, title: 'уровень', icon: <FileUploadRoundedIcon />, type: 'dropbox', value: [{name: 'Начинающий', count: 123}, {name: 'Продвинутый', count: 12}, {name: 'Эксперт', count: 12}]}
     ]
 
     return (
         <div className='filters'>
-            {sorting.map(sort => getSorting(sort))}
+            {sorting.map(sort => <div key={sort.id}>{getSorting(sort)}</div>)}
         </div>
     );
 };

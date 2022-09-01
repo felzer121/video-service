@@ -3,6 +3,7 @@ import { createTheme, ThemeProvider } from '@mui/material';
 
 const theme = createTheme({
     palette: {
+      mode: 'dark',
       primary: {
         main: '#FFBE2E',
       },
@@ -57,9 +58,9 @@ const theme = createTheme({
 });
 
 export const withTheme = (Component: React.FunctionComponent) => (props: any) => {
-    return (
-        <ThemeProvider theme={theme}>
-            <Component {...props} />
-        </ThemeProvider>
-    )
+  return (
+      <ThemeProvider theme={theme}>
+          <Component {...props} />
+      </ThemeProvider>
+  )
 }
