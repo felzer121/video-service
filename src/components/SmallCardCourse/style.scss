@@ -1,0 +1,54 @@
+.smallCardCourse {
+    background: #1B1918;
+    // box-shadow: 4px 4px 20px 2px rgba(226, 226, 226, 0.1);
+    border-radius: 4px;
+    &__preview {
+        width: 100%;
+        border-bottom: solid 2px #F1C40F;
+        border-radius: 4px 4px 0 0;
+    }
+    &__about {
+        padding: 0 15px;
+        &-info {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: solid 1px var(--dark-mode-line);
+        }
+        &Bottom {
+            display: flex;
+            justify-content: space-between;
+            color: var(--dark-mode-subColor);
+            height: 40px;
+            align-items: center;
+            &-author {
+                font-size: 14px;
+                line-height: 24px;
+                color: #C4C4C4;
+            }
+        }
+        &-subscribe {
+            display: flex;
+            align-items: center;
+        }
+        &-title {
+            text-overflow: ellipsis;
+            overflow: hidden;
+            width: 100%;
+            height: 40px;
+            margin: 8px 0;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            color: #FFFFFF;
+            font-size: 18px;
+        }
+        &-userSubscribe {
+            color: #C4C4C4;
+            margin: 8px 0;
+            display: flex;
+            align-items: center;
+            &-count {
+                margin-left: 5px;
+            }
+        }
+    }
+}
