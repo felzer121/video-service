@@ -40,19 +40,24 @@ export const Routing = () => {
 
     return (
         <>
-            {transitions((styles, item) => (
-                <animated.div style={styles}>
-                    <Routes>
-                        <Route path="/" element={isAuth ? <Home /> : <Auth />} />
-                        <Route path="/registration" element={isAuth ? <Home /> : <Registration />} />
-                        <Route path="/catalog" element={isAuth ? <CatalogPage /> : <Auth />} />
-                        <Route path="/settings" element={isAuth ? <Settings /> : <Auth />} /> 
-                        <Route path="/user" element={isAuth ? <UserPage /> : <Auth />} /> 
-                        <Route path="/course/:id" element={isAuth ? <CoursePage /> : <Auth />} />
-                        <Route path="/message" element={isAuth ? <MessagePage /> : <Auth />} />
-                    </Routes>
-                </animated.div>
-            ))}
+            <div style={{overflow: 'hidden'}}>
+                {transitions((styles, item) => (
+                    <animated.div style={styles}>
+                        <Routes>
+                            <Route path="/auth" element={isAuth ? <Home /> : <Auth />} />
+                            <Route path="/registration" element={isAuth ? <Home /> : <Registration />} />
+                        </Routes>
+                    </animated.div>
+                ))}
+            </div>
+             <Routes>
+                <Route path="/" element={isAuth ? <Home /> : <Auth />} />
+                <Route path="/catalog" element={isAuth ? <CatalogPage /> : <Auth />} />
+                <Route path="/settings" element={isAuth ? <Settings /> : <Auth />} /> 
+                <Route path="/user" element={isAuth ? <UserPage /> : <Auth />} /> 
+                <Route path="catalog/course/:id" element={isAuth ? <CoursePage /> : <Auth />} />
+                <Route path="/message" element={isAuth ? <MessagePage /> : <Auth />} />
+            </Routes>
         </>
         
     );

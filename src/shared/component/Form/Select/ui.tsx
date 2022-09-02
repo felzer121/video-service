@@ -10,14 +10,10 @@ import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import { IconButton } from '@mui/material';
 
 interface SelectProps {
-  options: Array<{
-    title: string;
-    year: number;
-  }>
   sort: sortingType
 }
 
-export const Select = ({options, sort}: SelectProps) => {
+export const Select = ({sort}: SelectProps) => {
   const {
     getRootProps,
     getInputProps,
@@ -30,8 +26,8 @@ export const Select = ({options, sort}: SelectProps) => {
     setAnchorEl,
   } = useAutocomplete({
     id: 'customized-hook-demo',
-    options: options,
-    getOptionLabel: (option) => option.title,
+    options: sort.value,
+    getOptionLabel: (option) => option.name,
   });
 
   
@@ -45,10 +41,10 @@ export const Select = ({options, sort}: SelectProps) => {
       </div>
       {groupedOptions.length > 0 ? (
           <Listbox {...getListboxProps()}>
-          {(groupedOptions as typeof options).map((option, index) => (
+          {(groupedOptions as typeof sort.value).map((option, index) => (
               <li {...getOptionProps({ option, index })}>
-                <span>{option.title}</span>
-                <CheckIcon fontSize="small" />
+                <div className='selectDropbox__icon'>{option.icon}</div>
+                <span>{option.name}</span>
               </li>
           ))}
           </Listbox>

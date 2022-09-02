@@ -18,22 +18,32 @@ export const Listbox = styled('ul')(
     border-radius: 4px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     z-index: 1;
-  
+    box-shadow: 4px 4px 20px 2px rgba(226, 226, 226, 0.05);
     & li {
-      padding: 5px 12px;
+      padding: 8px 12px;
       display: flex;
-  
+      align-items: center;
       & span {
         flex-grow: 1;
+        :first-letter {
+          text-transform: uppercase;
+        }
       }
-  
+      & .selectDropbox__icon {
+        display: flex;
+        align-items: center;
+        & svg {
+          margin-right: 6px;
+          font-size: 22px;
+          color: #fff;
+        }
+      }
       & svg {
         color: transparent;
       }
     }
-  
     & li[aria-selected='true'] {
-      background-color: ${theme.palette.mode === 'dark' ? '#2b2b2b' : '#fafafa'};
+      background-color: ${theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.08)' : '#fafafa'};
       font-weight: 600;
   
       & svg {
@@ -42,11 +52,11 @@ export const Listbox = styled('ul')(
     }
   
     & li.${autocompleteClasses.focused} {
-      background-color: ${theme.palette.mode === 'dark' ? '#003b57' : '#e6f7ff'};
+      background-color: ${theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.08)' : '#e6f7ff'};
       cursor: pointer;
   
       & svg {
-        color: currentColor;
+        color: ${theme.palette.primary.main};
       }
     }
   `,

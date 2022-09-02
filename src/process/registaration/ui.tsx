@@ -218,7 +218,7 @@ export const Registration = () => {
                             </Box>
                         </div>
                         <div className='registration__formControl'>
-                            <Link to="/" className='registration__link'>
+                            <Link to="/auth" className='registration__link'>
                                 <ButtonFill variant='text' className='auth__loginButton'>
                                     Назад
                                 </ButtonFill>

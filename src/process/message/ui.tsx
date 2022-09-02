@@ -19,8 +19,8 @@ export const Message = () => {
         username: 'Estel',
         status: 'был в сети 15 мин назад',
         messages: [
-            {user: userImg, message: '14 практических задан...', time: '12:19'},
-            {user: userImg, message: 'asfafafsawqrt', time: '12:20'}
+            {id:'1', user: userImg, message: '14 практических задан...', time: '12:19'},
+            {id:'2', user: userImg, message: 'asfafafsawqrt', time: '12:20'}
         ]
     })
 
@@ -55,7 +55,7 @@ export const Message = () => {
                         />
                     </FormControl>
                     {chats.map(chat => (
-                        <Button className={`message__usersChats`} style={chat.id === chatId ? {backgroundColor: 'rgba(0, 0, 0, 0.4)'} : {}} onClick={() => handleClick(chat.id)}>
+                        <Button key={chat.id} className={`message__usersChats`} style={chat.id === chatId ? {backgroundColor: 'rgba(0, 0, 0, 0.4)'} : {}} onClick={() => handleClick(chat.id)}>
                             <img src={chat.img} alt="" />
                             <div className='message__usersChats-info'>
                                 <div className='message__usersChats-title'>
@@ -78,7 +78,7 @@ export const Message = () => {
                     </div>
                     <div className='message__chatBox'>
                         {chat.messages.map(message => (
-                            <div className='message__chatMessage'>
+                            <div className='message__chatMessage' key={message.id}>
                                 <img src={userImg} />
                                 <div className='message__chatMessage-block'>
                                     <Typography variant='body1'>{message.message}</Typography>

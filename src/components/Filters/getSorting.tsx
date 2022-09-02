@@ -10,6 +10,7 @@ export interface sortingType {
     label?: string
     value: Array<{
         name: string
+        icon?: React.ReactNode
         count?: number
     }>
 }
@@ -29,7 +30,7 @@ export const getSorting = (sort: sortingType): React.ReactNode => {
         case 'select' :
             return <div className='filters__select'>
                 <Typography variant='h4' sx={{marginBottom: '.5em'}}>{sort.title.toUpperCase()}</Typography>
-                <Select options={top100Films} sort={sort} />
+                <Select sort={sort} />
             </div>
         case 'multiselect' :
             return <div className='filters__multiselect'>

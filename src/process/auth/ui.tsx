@@ -172,7 +172,7 @@ export const Auth = () => {
                         </div>
                         <div className='auth__noAccount-info'>
                             <p className='auth__noAccount-txt'>Не имеете учетной записи?
-                                <NavLink to="registration" className='auth__noAccount-link'> Регистрация</NavLink>
+                                <NavLink to="/registration" className='auth__noAccount-link'> Регистрация</NavLink>
                             </p>
                         </div>
                     </div>

@@ -27,7 +27,7 @@ export const CardCourse = ({id, title, subscribe, tagName}: CardCourseProps) => 
     return (
         <animated.div onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
                       onMouseLeave={() => set({ xys: [0, 0, 1]})} style={{ transform: props.xys.interpolate(trans) }} className='cardCourse'> 
-            <NavLink to={`course/${id}`}>
+            <NavLink to={`catalog/course/${id}`}>
                 <img src={ preview } className='cardCourse__preview' alt="" />
             </NavLink>
             <div className='cardCourse__about'>
@@ -40,7 +40,7 @@ export const CardCourse = ({id, title, subscribe, tagName}: CardCourseProps) => 
                         </p> 
                     </div>
                     <div className='cardCourse__about-subscribe'>
-                        <NavLink to={`course/${id}`}><Button variant="text" startIcon={<GroupAddIcon />}>Перейти</Button></NavLink>
+                        <NavLink to={`catalog/course/${id}`}><Button variant="text" startIcon={<GroupAddIcon />}>Перейти</Button></NavLink>
                     </div>
                 </div>
                 <div className='cardCourse__about-tag'>

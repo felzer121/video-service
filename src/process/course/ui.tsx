@@ -113,7 +113,7 @@ const Course = () => {
                                <div className='course__bodyCourseContent-panel'>
                                     {
                                         courseСontentsStack.map(courseСontent => (
-                                            <Accordion expanded={expanded === courseСontent.id} onChange={handleChange(courseСontent.id)}>
+                                            <Accordion expanded={expanded === courseСontent.id} key={courseСontent.id} onChange={handleChange(courseСontent.id)}>
                                                 <AccordionSummary
                                                     expandIcon={<ExpandMoreIcon />}
                                                     aria-controls="panel1bh-content"
