@@ -1,24 +1,22 @@
-import { useState } from 'react'
-import { withProviders } from "./providers";
-import './index.scss';
 import { Routing } from '../pages/Router';
 import { BrowserRouter } from "react-router-dom";
-import { Provider } from 'react-redux'
-import { store } from "../shared/store";
+import { compose } from 'redux';
 import { withTheme } from './providers/theme';
-
+import { withStore } from './providers/store'
+import './index.scss';
 
 function App() {
 
   return (
-    <div>
+    <div className='App'>
       <BrowserRouter>
-        <Provider store={store}>
-          <Routing />
-        </Provider>
+        <Routing />
       </BrowserRouter>
     </div>
   )
 }
 
-export default withTheme(App)
+export default compose(
+  withTheme,
+  withStore,
+)(App);

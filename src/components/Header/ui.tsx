@@ -11,7 +11,7 @@ export const Header = () => {
         <div className='header'>
             <div className='header__sidenav'>
                 <div className='header__burger'>
-                    <Button variant="text"><MenuRoundedIcon /></Button>
+                    <Button variant="text" sx={{height: '100%', marginLeft: '-10px'}}><MenuRoundedIcon /></Button>
                 </div>
                 <div className='header__logo'>
                     <NavLink to='/'>appcurse<span className='header__logo-sub'>_</span></NavLink>

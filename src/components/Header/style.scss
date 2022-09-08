@@ -6,7 +6,7 @@
     border-bottom: solid 1px var(--dark-mode-line);
     padding: var(--container-padding-desctop);
     &__burger {
-        margin-right: 1em;
+        height: 100%;
         display: none;
     }
     &__logo {
@@ -17,6 +17,7 @@
         }
     }
     &__sidenav {
+        height: 100%;
         display: flex;
         align-items: center;
     }

@@ -5,7 +5,7 @@ import './style.scss'
 import GroupAddIcon from '@mui/icons-material/GroupAdd'
 import { Button } from '@mui/material'
 import { tags } from '../../shared/tags/index'
-import { useSpring, animated } from 'react-spring'
+import { useSpring, animated, to } from 'react-spring'
 import { NavLink } from 'react-router-dom'
 
 interface CardCourseProps {
@@ -26,7 +26,7 @@ export const CardCourse = ({id, title, subscribe, tagName}: CardCourseProps) => 
  
     return (
         <animated.div onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
-                      onMouseLeave={() => set({ xys: [0, 0, 1]})} style={{ transform: props.xys.interpolate(trans) }} className='cardCourse'> 
+                      onMouseLeave={() => set({ xys: [0, 0, 1]})} style={{ transform: to(props.xys, trans) }} className='cardCourse'> 
             <NavLink to={`catalog/course/${id}`}>
                 <img src={ preview } className='cardCourse__preview' alt="" />
             </NavLink>

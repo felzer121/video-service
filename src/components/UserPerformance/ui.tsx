@@ -9,6 +9,8 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import PersonIcon from '@mui/icons-material/Person';
 import { NavLink } from 'react-router-dom';
 import SearchIcon from '@mui/icons-material/Search';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../shared/store';
 
 const UserList = styled(List)<{ component?: React.ElementType }>({
     '&': {
@@ -41,6 +43,8 @@ const dataUser = [
 
 export const UserPerformance = () => {
     const [active, setActive] = React.useState(false)
+    const isAuth = useSelector((state: RootState) => state.user.isAuth)
+
     let menuLeaveTimer: number;
 
     const props = useSpring({
@@ -59,12 +63,20 @@ export const UserPerformance = () => {
         setActive(true)
     }
 
-    return (    
-        <div className='userPerformance'>
+    const User = () => {
+        if(isAuth)
+            return (
             <div className='userPerformance__block' onMouseEnter={enterMouse} onMouseLeave={leaveMouse}>
-                <div className='userPerformance__icon'>
-                    <img className='userPerformance__icon-picture' src={user} alt="" />
-                    <div className='userPerformance__icon-notification'>1</div>
+                 <div className='userPerformance__icon'>
+                        <img className='userPerformance__icon-picture' src={user} alt="" />
+                        <div className='userPerformance__icon-notification'>1</div>
+                    </div>
+                <div className='userPerformance__info'>
+                    <div className='userPerformance__info-name'>
+                        <Typography variant='h4' style={{color: active ? '#F1C40F' : 'inherit'}}>Albert</Typography>
+                        <ArrowDropDownIcon />
+                    </div>
+                    <Typography variant='h5'>warhammer431@mail.ru</Typography>
                 </div>
                 <animated.div
                     style={{
@@ -86,14 +98,16 @@ export const UserPerformance = () => {
                         ))}
                     </UserList>
                 </animated.div>
-                <div className='userPerformance__info'>
-                    <div className='userPerformance__info-name'>
-                        <Typography variant='h4' style={{color: active ? '#F1C40F' : 'inherit'}}>Albert</Typography>
-                        <ArrowDropDownIcon />
-                    </div>
-                    <Typography variant='h5'>warhammer431@mail.ru</Typography>
-                </div>
-            </div>
+            </div>)
+        else
+            return(
+                <div>Авторизация</div>
+            )
+    }
+
+    return (    
+        <div className='userPerformance'>
+            <User />
         </div>
     )
 }

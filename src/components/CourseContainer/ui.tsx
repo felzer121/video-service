@@ -12,10 +12,10 @@ export const CourseContainer = () => {
         {id: '1', title: 'Special B-day podcast', subscribe: 204, tagName: 'javascript'},
         {id: '2', title: 'Buttons with icons and label', subscribe: 124, tagName: 'NestJS'},
         {id: '3', title: 'React.ReactElement aweqr', subscribe: 1033, tagName: 'javascript'},
-        {id: '2', title: 'Buttons with icons and label', subscribe: 124, tagName: 'NestJS'},
-        {id: '3', title: 'React.ReactElement aweqr', subscribe: 1033, tagName: 'javascript'},
-        {id: '4', title: 'Dependency Inversion Principle', subscribe: 666, tagName: 'javascript'},
-        {id: '5', title: 'Для устойчивой системы характерны', subscribe: 123, tagName: 'javascript'}
+        {id: '4', title: 'Buttons with icons and label', subscribe: 124, tagName: 'NestJS'},
+        {id: '5', title: 'React.ReactElement aweqr', subscribe: 1033, tagName: 'javascript'},
+        {id: '6', title: 'Dependency Inversion Principle', subscribe: 666, tagName: 'javascript'},
+        {id: '7', title: 'Для устойчивой системы характерны', subscribe: 123, tagName: 'javascript'}
     ]
 
     return (
