@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "module": "CommonJS",
+        "resolveJsonModule": true,
+        "esModuleInterop": true,
+        "target": "ES2022",
+        "moduleResolution": "node",
+        "outDir": "./dist",
+        "strict": true,
+        "strictPropertyInitialization": false,
+        "sourceMap": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true
+    },
+    "exclude": ["node_modules"],
+    "include": [
+        "./src/**/*.tsx",
+        "./src/**/*.ts",
+        "src/__tests__",
+        "./src/**/*",
+    ]  
+}
