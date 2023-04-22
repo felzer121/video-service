@@ -1,28 +1,26 @@
-import React from 'react'
-import {
-  useAutocomplete,
-} from '@mui/base/AutocompleteUnstyled';
-import CheckIcon from '@mui/icons-material/Check';
-import { sortingType } from '../../../../components/Filters/getSorting';
-import { InputWrapper } from '../InputWrapper/ui';
-import { Listbox } from '../ListBox/ui';
-import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
-import { IconButton } from '@mui/material';
-import { StyledTag } from '../StyledTag/ui';
+import React from "react";
+import useAutocomplete from "@mui/base/useAutocomplete";
+import CheckIcon from "@mui/icons-material/Check";
+import { sortingType } from "../../../../components/Filters/getSorting";
+import { InputWrapper } from "../InputWrapper/ui";
+import { Listbox } from "../ListBox/ui";
+import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
+import { IconButton } from "@mui/material";
+import { StyledTag } from "../StyledTag/ui";
 
 interface SelectProps {
   options: Array<{
     title: string;
     year: number;
-  }>
-  sort: sortingType
+  }>;
+  sort: sortingType;
 }
 
 interface FilterOptionType {
-    title: string
+  title: string;
 }
 
-export const MultiSelect = ({options, sort}: SelectProps) => {
+export const MultiSelect = ({ options, sort }: SelectProps) => {
   const {
     getRootProps,
     getInputProps,
@@ -35,32 +33,34 @@ export const MultiSelect = ({options, sort}: SelectProps) => {
     setAnchorEl,
   } = useAutocomplete({
     multiple: true,
-    id: 'customized-hook-demo',
+    id: "customized-hook-demo",
     options: options,
     getOptionLabel: (option) => option.title,
   });
 
-  
   return (
     <>
       <div {...getRootProps()}>
-          <InputWrapper ref={setAnchorEl} className={focused ? 'focused' : ''}>
-                {value.map((option: FilterOptionType, index: number) => (
-                    <StyledTag label={option.title} {...getTagProps({ index })} />
-                ))}
-                <input {...getInputProps()} placeholder={value.length ? '' : sort.label} />
-          </InputWrapper>
+        <InputWrapper ref={setAnchorEl} className={focused ? "focused" : ""}>
+          {value.map((option: FilterOptionType, index: number) => (
+            <StyledTag label={option.title} {...getTagProps({ index })} />
+          ))}
+          <input
+            {...getInputProps()}
+            placeholder={value.length ? "" : sort.label}
+          />
+        </InputWrapper>
       </div>
       {groupedOptions.length > 0 ? (
-          <Listbox {...getListboxProps()}>
+        <Listbox {...getListboxProps()}>
           {(groupedOptions as typeof options).map((option, index) => (
-              <li {...getOptionProps({ option, index })}>
-                <span>{option.title}</span>
-                <CheckIcon fontSize="small" />
-              </li>
+            <li {...getOptionProps({ option, index })}>
+              <span>{option.title}</span>
+              <CheckIcon fontSize="small" />
+            </li>
           ))}
-          </Listbox>
+        </Listbox>
       ) : null}
     </>
-  )
-}
+  );
+};
