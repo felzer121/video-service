@@ -3,6 +3,7 @@ import fp from 'fastify-plugin'
 import { TokenService } from '../services/tokenService'
 import { buildErrorResponse, buildSuccessResponse } from "../../infra/responseApi"
 import { decode } from 'punycode'
+import { User } from '../../domain/user/user.entity'
 
 module.exports = fp(function(fastify: FastifyInstance, opts, next) {
   fastify.decorate('authenticate', function(pluginOptions) {
@@ -16,22 +17,26 @@ module.exports = fp(function(fastify: FastifyInstance, opts, next) {
         try {
           const { refreshToken } = request.cookies
           if (refreshToken) {
-            const user = fastify.jwt.verify(refreshToken, { complete: true })
+            const verify = fastify.jwt.verify(refreshToken, { complete: true })
 
             const token = new TokenService()
-            const tokens = await token.generateToken(fastify, fastify.jwt.decode(refreshToken), reply)
+            const user = fastify.jwt.decode<User>(refreshToken)
+            if(user) {
+              const tokens = await token.generateToken(fastify, user, reply)
 
-            reply
-              .code(200)
-              .setCookie('refreshToken', tokens.refreshToken, {
-                path: '/',
-                secure: true,
-                httpOnly: true,
-                sameSite: true
-              })
-              .send(buildSuccessResponse({ accessToken: tokens.accessToken }))
+              reply
+                .code(200)
+                .setCookie('refreshToken', tokens.refreshToken, {
+                  path: '/',
+                  secure: true,
+                  httpOnly: true,
+                  sameSite: true
+                })
+                .send(buildSuccessResponse({ accessToken: tokens.accessToken }))
+            } else throw Error('error decode')
+            
           } else {
-            throw new Error()
+            throw Error('not')
           }
         } catch (err) {
           done(err)

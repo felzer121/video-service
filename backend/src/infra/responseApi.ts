@@ -1,3 +1,5 @@
+import { getErrorMap } from "zod";
+
 interface ApiResponseProperty {
     message: string;
     error: boolean;
@@ -9,7 +11,20 @@ interface HttpResponse {
     response: ApiResponseProperty;
     data: ApiDataProperty;
 }
-  
+
+export const getError = (error: unknown): ApiResponseProperty => {
+    
+    let message
+    if (error instanceof Error) message = error.message
+    else message = String(error)
+    const response = {
+        error: true,
+        message: message || 'Error'
+    }
+    return response
+
+}
+
 function buildResponse(data: ApiDataProperty, response: Partial<ApiResponseProperty>): HttpResponse {
     const base: HttpResponse = {
       response: {
@@ -36,10 +51,9 @@ export function buildSuccessResponse(
 }
   
 export function buildErrorResponse(
-    response: Partial<ApiResponseProperty> = {},
+    response: unknown = {},
 ): HttpResponse {
-    response.error = response.error || true;
-    response.message = response.message || 'Error';
-  
-    return buildResponse([], response);
+    const dataProperty = getError(response)
+
+    return buildResponse([], dataProperty);
 }

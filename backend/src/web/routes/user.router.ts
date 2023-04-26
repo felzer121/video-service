@@ -21,13 +21,12 @@ export class UserRouter implements Router {
     app.post<{ Body: AuthUserRequestDto }>(
       '/authorization',
       {
-        attachValidation: true,
         schema: authorizationShema
       },
       (request, reply) => this.userHandler.auth(app, request, reply)
     )
     app.get(
-      '/client',
+      '/user',
       {
         schema: {
           security: [{ accessToken: [] }]
@@ -35,9 +34,6 @@ export class UserRouter implements Router {
       },
       (request, reply) => this.userHandler.getUser(app, request, reply)
     )
-    app.get('/test', {}, (request, reply) => {
-      reply.code(200).send('Zolupo')
-    })
     app.get<{ Body: AuthUserRequestDto }>(
       '/protected',
       {

@@ -15,8 +15,8 @@ import './styles.scss'
 import { Link } from 'react-router-dom'
 import { register } from '../../shared/api/user'
 import Happy from './fon.svg?component'
-import { useDispatch } from 'react-redux'
-import { setAuth } from '../../shared/store/user/userSlice'
+// import { useDispatch } from 'react-redux'
+// import { setAuth } from '../../shared/store/user/userSlice'
 import { MainButton } from '../../shared/component/MainButton'
 import { ButtonFill } from '../../shared/component/ButtonFill'
 
@@ -36,7 +36,7 @@ interface validAuthField {
 
 export const Registration = () => {
 
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
     const [authField, setAuthField] = React.useState<authField>({ name: '', serdName: '', email: '', password: '' })
     const [validateField, setValidateField] = React.useState<validAuthField>({
         name: { isValid: null },
@@ -55,15 +55,15 @@ export const Registration = () => {
         }
     }
     
-    const registration = async () => {
-        try {
-            const afs = await register(authField.email, authField.password)
-            dispatch(setAuth(true))
-        } catch(message) {
-            const error = message as string
-            setValidateField({ ...validateField, email: { isValid: false, error: error } })
-        }
-    }
+    // const registration = async () => {
+    //     try {
+    //         const afs = await register(authField.email, authField.password)
+    //         dispatch(setAuth(true))
+    //     } catch(message) {
+    //         const error = message as string
+    //         setValidateField({ ...validateField, email: { isValid: false, error: error } })
+    //     }
+    // }
 
     return (
         <div className='registration'>

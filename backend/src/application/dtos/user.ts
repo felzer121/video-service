@@ -6,6 +6,6 @@ export interface CreateUserRequestDto {
 }
 
 export interface AuthUserRequestDto {
-    email: string
+    login: string
     password: string
 }

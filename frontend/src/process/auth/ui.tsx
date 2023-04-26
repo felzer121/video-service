@@ -12,15 +12,16 @@ import HowToRegIcon from '@mui/icons-material/HowToReg'
 import { validate } from '../../shared/validate'
 import { DarkFilled } from '../../shared/component/Form/DarkFilled'
 import './styles.scss'
-import { useDispatch } from 'react-redux'
-import { setAuth } from '../../shared/store/user/userSlice'
 import { NavLink } from 'react-router-dom'
 import Happy from './fon.svg?component'
 import { login } from '../../shared/api/user'
 import { MainButton } from '../../shared/component/MainButton'
+import { createEffect } from 'effector'
+import {useStore} from 'effector-react'
+import { $user, authorizationFx } from '../../shared/store/user/user'
 
 interface authField {
-    email: string
+    username: string
     password: string
 }
   
@@ -33,15 +34,16 @@ interface validAuthField {
 
 export const Auth = () => {
 
-    const [authField, setAuthField] = React.useState<authField>({ email: '', password: '' })
+    const user = useStore($user)
+    const [authField, setAuthField] = React.useState<authField>({ username: '', password: '' })
     const [validateField, setValidateField] = React.useState<validAuthField>({
-      email: { isValid: null },
+      username: { isValid: null },
       password: { isValid: null }
     })
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
     const [error, setError] = React.useState('')
 
-    const handleValidField = (type: 'email' | 'password', value: string) => {
+    const handleValidField = (type: 'username' | 'password', value: string) => {
         const valid = validate(type, value)
         if (valid?.isValid) {
           setValidateField({ ...validateField, [type]: { isValid: valid.isValid } })
@@ -49,17 +51,18 @@ export const Auth = () => {
           setValidateField({ ...validateField, [type]: { isValid: valid.isValid, error: valid?.error } })
         }
     }
-    
-    const authentication = async () => {
-        try {
-            await login(authField.email, authField.password)
-            dispatch(setAuth(true))
-        } catch(message) {
-            const error = message as string
-            setValidateField({ ...validateField, email: { isValid: false, error: error } })
-        }
-    }
 
+
+    const authentication = async () => {
+        authorizationFx({username: authField.username, password: authField.password})
+    //     try {
+    //         await login(authField.username, authField.password)
+    //         dispatch(setAuth(true))
+    //     } catch(message) {
+    //         const error = message as string
+    //         setValidateField({ ...validateField, username: { isValid: false, error: error } })
+    //     }
+    }
 
     return (
         <div className='auth'>
@@ -91,7 +94,7 @@ export const Auth = () => {
                             <Typography variant='subtitle1' sx={{ display: 'flex' }} component='p'>
                                 <HowToRegIcon sx={{ marginRight: '7px' 
                             }} />
-                                Введите email и получите код авторизации
+                                Введите username и получите код авторизации
                             </Typography>
                         </div>
                         <div className='auth__loginForm'>
@@ -100,26 +103,26 @@ export const Auth = () => {
                                 sx={{ width: '100%' }}
                                 variant='filled'
                                 error={
-                                    !validateField.email.isValid && validateField.email.isValid !== null
+                                    !validateField.username.isValid && validateField.username.isValid !== null
                                     ? true
                                     : false
                                 }>
                                 <InputLabel
-                                    htmlFor='email'
+                                    htmlFor='username'
                                     color='primary'
                                     sx={{ color: '#6D6D6D', fontFamily: 'Inter' }}>
-                                    Email
+                                    username
                                 </InputLabel>
                                 <DarkFilled
                                     autoComplete='off'
-                                    value={authField.email}
-                                    onChange={event => setAuthField({ ...authField, email: event.target.value })}
+                                    value={authField.username}
+                                    onChange={event => setAuthField({ ...authField, username: event.target.value })}
                                     required
-                                    id='email'
-                                    onBlur={event => handleValidField('email', event.target.value)}
+                                    id='username'
+                                    onBlur={event => handleValidField('username', event.target.value)}
                                 />
-                                {validateField?.email?.error && (
-                                    <FormHelperText id='password'>{validateField.email.error}</FormHelperText>
+                                {validateField?.username?.error && (
+                                    <FormHelperText id='password'>{validateField.username.error}</FormHelperText>
                                 )}
                                 </FormControl>
                             </Box>
@@ -154,9 +157,9 @@ export const Auth = () => {
                             </Box>
                         </div>
                         <div className='auth__loginControl'>
-                            <Tooltip disableHoverListener={validateField.email.isValid && validateField.password.isValid ? true : false} title="fill the form">
+                            <Tooltip disableHoverListener={validateField.username.isValid && validateField.password.isValid ? true : false} title="fill the form">
                                 <span>
-                                    <MainButton disabled={authField.email && authField.password ? false : true} 
+                                    <MainButton disabled={authField.username && authField.password ? false : true} 
                                             variant='contained' onClick={authentication} className='auth__loginButton'>
                                         Войти
                                     </MainButton>
