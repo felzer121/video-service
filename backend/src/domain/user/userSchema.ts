@@ -1,5 +1,5 @@
-import { JSONSchemaType } from "ajv";
-import { FastifySchema, FastifyRequest } from "fastify";
+import { JSONSchemaType } from 'ajv'
+import { FastifySchema, FastifyRequest } from 'fastify'
 
 const usernameSchema: JSONSchemaType<string> = {
   type: 'string',
@@ -23,17 +23,16 @@ export const registerSchema: FastifySchema = {
     properties: {
       name: usernameSchema,
       email: emailSchema,
-      password: passwordShema,
+      password: passwordShema
     },
-    required: ["name", "email", "password"],
+    required: ['name', 'email', 'password']
   }
 }
 
 export const authorizationShema: FastifySchema = {
   body: {
     additionalProperties: false,
-    type: 'object',
-    required: ["login", "password"],
+    required: ['login', 'password'],
     properties: {
       login: emailSchema || usernameSchema,
       password: passwordShema

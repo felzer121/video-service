@@ -92,6 +92,7 @@ const loadApp: FastifyPluginAsync = async (app: FastifyInstance) => {
       return ajv.compile(schema)
     })
   })
+
   const ajv = new Ajv({
     allErrors: true,
     $data: true

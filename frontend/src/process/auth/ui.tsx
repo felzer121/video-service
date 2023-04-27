@@ -14,11 +14,11 @@ import { DarkFilled } from "../../shared/component/Form/DarkFilled";
 import "./styles.scss";
 import { NavLink } from "react-router-dom";
 import { ReactComponent as AuthFon } from "./fon.svg";
-import { login } from "../../shared/api/user";
+import { authorizationFx, login } from "../../shared/api/user";
 import { MainButton } from "../../shared/component/MainButton";
-import { createEffect } from "effector";
 import { useStore } from "effector-react";
-import { $user, authorizationFx } from "../../shared/store/user/user";
+import { $user } from "../../shared/store/user/user";
+import { useNavigate } from "react-router-dom";
 
 interface authField {
   username: string;
@@ -33,7 +33,7 @@ interface validAuthField {
 }
 
 export const Auth = () => {
-  const user = useStore($user);
+  const navigate = useNavigate();
   const [authField, setAuthField] = React.useState<authField>({
     username: "",
     password: "",
@@ -42,8 +42,6 @@ export const Auth = () => {
     username: { isValid: null },
     password: { isValid: null },
   });
-  // const dispatch = useDispatch()
-  const [error, setError] = React.useState("");
 
   const handleValidField = (type: "username" | "password", value: string) => {
     const valid = validate(type, value);
@@ -61,17 +59,20 @@ export const Auth = () => {
   };
 
   const authentication = async () => {
-    authorizationFx({
-      username: authField.username,
-      password: authField.password,
-    });
-    //     try {
-    //         await login(authField.username, authField.password)
-    //         dispatch(setAuth(true))
-    //     } catch(message) {
-    //         const error = message as string
-    //         setValidateField({ ...validateField, username: { isValid: false, error: error } })
-    //     }
+    try {
+      const res = await authorizationFx({
+        username: authField.username,
+        password: authField.password,
+      });
+      if (res.response.error) throw new Error(res.response.message);
+      localStorage.setItem("accessToken", res.data.accessToken);
+      navigate("/");
+    } catch (e) {
+      setValidateField({
+        ...validateField,
+        username: { isValid: false, error: (e as Error).message },
+      });
+    }
   };
 
   return (
@@ -128,7 +129,7 @@ export const Auth = () => {
                     color="primary"
                     sx={{ color: "#6D6D6D", fontFamily: "Inter" }}
                   >
-                    username
+                    Login
                   </InputLabel>
                   <DarkFilled
                     autoComplete="off"
