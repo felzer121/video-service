@@ -15,6 +15,7 @@ import MessagePage from "./MessagePage/ui";
 import CatalogPage from "./CatalogPage/ui";
 import { $user, getUserFx } from "../shared/store/user/user";
 import { useStore } from "effector-react";
+import CreateCoursePage from "./CreateCoursePage/ui";
 // const Auth = lazy(() => import("./AuthPage"));
 // const Registration = lazy(() => import("./RegistrationPage"));
 
@@ -51,6 +52,10 @@ export const Routing = () => {
         <Route path="/catalog" element={<CatalogPage />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/user" element={user ? <UserPage /> : <Auth />} />
+        <Route
+          path="/course-create"
+          element={user ? <CreateCoursePage /> : <Auth />}
+        />
         <Route path="catalog/course/:id" element={<CoursePage />} />
         <Route path="/message" element={user ? <MessagePage /> : <Auth />} />
       </Routes>

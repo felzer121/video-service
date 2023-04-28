@@ -33,7 +33,6 @@ export class UserHandler {
 
   public async getUser(app: FastifyInstance, request: FastifyRequest, reply: FastifyReply): Promise<void> {
     try {
-      console.log(request.cookies)
       if (request.headers.authorization) {
         const accessToken = app.jwt.decode<{ email: string }>(request.headers.authorization.split(' ')[1])
         if (accessToken?.email) {

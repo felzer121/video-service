@@ -14,9 +14,14 @@ export const getUserFx = createEffect(async () => {
     method: "GET",
     credentials: "include",
     headers: {
-      Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      [localStorage.getItem("accessToken") ? "Authorization" : "Auth"]: `${
+        localStorage.getItem("accessToken")
+          ? "Bearer " + localStorage.getItem("accessToken")
+          : "null"
+      }`,
     },
   });
+
   return req.json();
 });
 

@@ -1,0 +1,15 @@
+.multipleInput {
+  position: relative;
+  &__helpers {
+    color: rgba(255, 255, 255, 0.45);
+    position: absolute;
+    left: -48px;
+  }
+  &__label {
+    outline: none;
+    &:empty:before {
+      content: attr(placeholder);
+      color: gray;
+    }
+  }
+}
